@@ -1,62 +1,67 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text, Button } from 'react-native'
-// import { StackNavigator } from 'react-navigation'
+import { View, StyleSheet, Text, Button, TextInput } from 'react-native'
 
 class MyWrapper extends Component {
+    static navigationOptions = {
+        title: "Add Subtract",
+    }
+
     constructor(props) {
         super(props)
         this. state = {
-            count: 0
+            count: 0,
+            name: "",
         }
     }
 
-    processPress(which) {
+    processPress(num) {
         let _count = this.state.count
-        switch (which) {
-            case "add": _count++; break;
-            case "sub": _count--; break;
-        }
-
+        _count += num
         this.setState({
             count: _count
         })
     }
 
-    resetCount(e) {
+    reset(e) {
         this.setState({
-            count: 0
+            count: 0,
+            name: ""
         })
     }
 
     render() {
         let { count, foo } = this.state
+        let { navigate } = this.props.navigation
+
         return (
             <View style={ styles.container }>
                 <View style={{ flexDirection: "row" }}>
                     <Button
-                        onPress={ () => {
-                            this.processPress("add")
-                        }}
+                        onPress={() => {this.processPress(1) }}
                         title="Add"
                         color="#FF5252"
                         accessibilityLabel="Learn more about this purple button"
                     />
                     <Button
-                        onPress={ () => {
-                            this.processPress("sub")
-                        }}
+                        onPress={() => { this.processPress(-1) }}
                         title="Sub"
                         color="#FF5252"
                         accessibilityLabel="Learn more about this purple button"
                     />
                 </View>
-                <Text style={{ fontSize: 30, color: "#fff" }}>{ count }</Text>
+                <Text style={{ fontSize: 30, color: "#333" }}>{ count }</Text>
                 <Button
-                    onPress={ this.resetCount.bind(this) }
+                    onPress={ this.reset.bind(this) }
                     title="Reset"
                     color="#FF5252"
                     accessibilityLabel="Learn more about this purple button"
                 />
+                <TextInput 
+                    onChangeText={ (name) => this.setState({ name }) }
+                    placeholder="What is your name?"
+                />
+                <Button title="view more &rarr;" 
+                    onPress={() => navigate("Second", { name: this.state.name }) } />
             </View>
         )
     }
@@ -65,14 +70,9 @@ class MyWrapper extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        paddingTop: 40,
         alignItems: 'center',
-        backgroundColor: '#333',
     },
-    btn: {
-        backgroundColor: "#ff5252",
-        color: "#fff"
-    },
-});
+})
 
 export default MyWrapper
