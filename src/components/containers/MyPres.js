@@ -9,10 +9,16 @@ class MyPres extends Component {
 
     render() {
         let { params } = this.props.navigation.state
-
+        console.log(params)
         return (
             <View style={ styles.container }>
-                <Text style={ styles.title }>Hello, { params.name }</Text>
+            {
+                params.users.map((obj, i) => {
+                    return <Text key={ i } style={ styles.title }>
+                                { obj.id } { obj.name }
+                           </Text>
+                })
+            }
             </View>
         )
     }

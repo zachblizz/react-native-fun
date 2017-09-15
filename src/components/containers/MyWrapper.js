@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text, Button, TextInput } from 'react-native'
+import AddSubtract from '../presentations/AddSubtract'
 
 class MyWrapper extends Component {
     static navigationOptions = {
@@ -10,44 +11,60 @@ class MyWrapper extends Component {
         super(props)
         this. state = {
             count: 0,
-            name: "",
+            user: {},
+            users: [],
         }
     }
 
     processPress(num) {
-        let _count = this.state.count
-        _count += num
+        let { count, user } = this.state
+        let usr = Object.assign({}, user)
+        count += num
+        usr.id = count
         this.setState({
-            count: _count
+            count,
+            user: usr
         })
+        console.log(usr)
     }
 
     reset(e) {
         this.setState({
-            count: 0,
-            name: ""
+            count: 0
+        })
+    }
+
+    addUser(name) {
+        let user = Object.assign({}, this.state.user)
+        user.name = name
+        this.setState({
+            user
         })
     }
 
     render() {
-        let { count, foo } = this.state
+        let { user, count, foo } = this.state
         let { navigate } = this.props.navigation
 
         return (
             <View style={ styles.container }>
-                <View style={{ flexDirection: "row" }}>
-                    <Button onPress={() => this.processPress(1) }
-                        title="Add" color="#FF5252" />
-                    <Button onPress={() => this.processPress(-1) }
-                        title="Sub" color="#FF5252" />
-                </View>
-                <Text style={{ fontSize: 30, color: "#333" }}>{ count }</Text>
+                <AddSubtract pressAddSub={ (num) => this.processPress(num) } 
+                    count={ count }/>
                 <Button onPress={ this.reset.bind(this) }
                     title="Reset" color="#FF5252" />
-                <TextInput onChangeText={ (name) => this.setState({ name }) }
+                <TextInput onChangeText={ (name) => this.addUser(name) }
                     placeholder="What is your name?" />
+                <Button title="add user" 
+                    onPress={() => {
+                        let users = Object.assign([], this.state.users)
+                        users.push(user)
+                        this.setState({
+                            users
+                        })
+                        console.log(this.state.users)
+                    }} />
                 <Button title="say hello! &rarr;" 
-                    onPress={() => navigate("Second", { name: this.state.name }) } />
+                    onPress={() => navigate("Second", { users: this.state.users }) } />
             </View>
         )
     }
