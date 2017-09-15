@@ -36,31 +36,17 @@ class MyWrapper extends Component {
         return (
             <View style={ styles.container }>
                 <View style={{ flexDirection: "row" }}>
-                    <Button
-                        onPress={() => {this.processPress(1) }}
-                        title="Add"
-                        color="#FF5252"
-                        accessibilityLabel="Learn more about this purple button"
-                    />
-                    <Button
-                        onPress={() => { this.processPress(-1) }}
-                        title="Sub"
-                        color="#FF5252"
-                        accessibilityLabel="Learn more about this purple button"
-                    />
+                    <Button onPress={() => this.processPress(1) }
+                        title="Add" color="#FF5252" />
+                    <Button onPress={() => this.processPress(-1) }
+                        title="Sub" color="#FF5252" />
                 </View>
                 <Text style={{ fontSize: 30, color: "#333" }}>{ count }</Text>
-                <Button
-                    onPress={ this.reset.bind(this) }
-                    title="Reset"
-                    color="#FF5252"
-                    accessibilityLabel="Learn more about this purple button"
-                />
-                <TextInput 
-                    onChangeText={ (name) => this.setState({ name }) }
-                    placeholder="What is your name?"
-                />
-                <Button title="view more &rarr;" 
+                <Button onPress={ this.reset.bind(this) }
+                    title="Reset" color="#FF5252" />
+                <TextInput onChangeText={ (name) => this.setState({ name }) }
+                    placeholder="What is your name?" />
+                <Button title="say hello! &rarr;" 
                     onPress={() => navigate("Second", { name: this.state.name }) } />
             </View>
         )
