@@ -5,8 +5,8 @@ import Home from './components/containers/Home'
 import Friends from './components/containers/Friends'
 
 const Navigation = StackNavigator({
-    First: { screen: Home },
-    Second: { screen: Friends },
+    Home: { screen: Home },
+    Friends: { screen: Friends },
 })
 
 export default Navigation

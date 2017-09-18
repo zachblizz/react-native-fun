@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text, Button, TextInput,
-         TouchableHighlight, AlertIOS } from 'react-native'
+import { View, StyleSheet, Text, Button, TextInput, TouchableHighlight, AlertIOS } from 'react-native'
 import FriendFields from '../presentations/FriendFields'
+import Nav from './Nav'
 
 class Home extends Component {
     static navigationOptions = {
@@ -83,14 +83,13 @@ class Home extends Component {
 
         return (
             <View style={ styles.container }>
-                <Button title="View Friends &rarr;" 
-                    onPress={() => navigate("Second", {})} />
                 <FriendFields pressAddSub={ (num) => this.friendId(num) } 
                     count={ count } resetAge={ this.reset.bind(this) } />
                 <TextInput style={ styles.name } onChangeText={ (name) => this.createFriend(name) }
-                    placeholder="friends name" />
+                    placeholder="friend name" />
                 <Button title="Add Friend" 
                     onPress={ () => this.addUser(friend) } />
+                <Nav nav={ navigate } />
             </View>
         )
     }
@@ -98,8 +97,8 @@ class Home extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         alignItems: 'center',
+        height: 100+'%'
     },
     name: {
         color: "#333",

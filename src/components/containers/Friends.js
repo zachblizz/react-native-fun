@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import moment from 'moment'
+import Nav from './Nav'
 
 class Friends extends Component {
     static navigationOptions = {
@@ -25,19 +26,28 @@ class Friends extends Component {
         .done()
     }
 
+    viewFriend(name) {
+        alert(name + " viewed")
+    }
+
     _renderFriend(item) {
         return (
             <View style={ styles.friendLayout }>
-                <Text style={ styles.friendTitle }>
-                    { item.age } { item.name }
-                </Text>
-                <Text style={{ fontSize: 10 }}>{ item.created }</Text>
+                <TouchableOpacity
+                    onPress={ () => this.viewFriend(item.name) }>
+                    <Text style={ styles.friendTitle }>
+                        { item.age } { item.name }
+                    </Text>
+                    <Text style={{ fontSize: 10 }}>{ item.created }</Text>
+                </TouchableOpacity>
             </View>
         )
     }
 
     render() {
         let { friends } = this.state
+        let { navigate } = this.props.navigation
+
         return (
             <View style={ styles.container }>
                 <FlatList 
@@ -54,6 +64,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
+        width: 100+'%'
     },
     friendLayout: {
         flexDirection: "column",
