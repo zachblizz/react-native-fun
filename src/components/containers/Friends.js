@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, FlatList } from 'react-native'
-const util = require('util')
+import moment from 'moment'
 
 class Friends extends Component {
     static navigationOptions = {
@@ -27,15 +27,17 @@ class Friends extends Component {
 
     _renderFriend(item) {
         return (
-            <Text style={ styles.friend }>
-                { item.age } { item.name }
-            </Text>
+            <View style={ styles.friendLayout }>
+                <Text style={ styles.friendTitle }>
+                    { item.age } { item.name }
+                </Text>
+                <Text style={{ fontSize: 10 }}>{ item.created }</Text>
+            </View>
         )
     }
 
     render() {
         let { friends } = this.state
-
         return (
             <View style={ styles.container }>
                 <FlatList 
@@ -53,10 +55,13 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
     },
-    friend: {
+    friendLayout: {
+        flexDirection: "column",
+        marginBottom: 10,
+    },
+    friendTitle: {
         fontSize: 20,
         color: "#333",
-        marginBottom: 5,
     },
 })
 

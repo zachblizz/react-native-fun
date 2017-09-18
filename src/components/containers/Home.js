@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text, Button, TextInput,
          TouchableHighlight, AlertIOS } from 'react-native'
-import AddSubtract from '../presentations/AddSubtract'
+import FriendFields from '../presentations/FriendFields'
 
 class Home extends Component {
     static navigationOptions = {
-        title: "Add Subtract",
+        title: "Add Friend",
     }
 
     constructor(props) {
@@ -44,8 +44,12 @@ class Home extends Component {
 
     addUser(friend) {
         fetch("http://localhost:3001/api/addUser", {
-            method: "PUT",
-            body: friend
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(friend)
         })
         .then(resp => resp.json())
         .then(data => {
@@ -79,20 +83,14 @@ class Home extends Component {
 
         return (
             <View style={ styles.container }>
-                <AddSubtract pressAddSub={ (num) => this.friendId(num) } 
-                    count={ count }/>
-                <Button onPress={ this.reset.bind(this) }
-                    title="Reset" color="#FF5252" />
-                <TextInput style={{ color: "#333" }} onChangeText={ (name) => this.createFriend(name) }
+                <Button title="View Friends &rarr;" 
+                    onPress={() => navigate("Second", {})} />
+                <FriendFields pressAddSub={ (num) => this.friendId(num) } 
+                    count={ count } resetAge={ this.reset.bind(this) } />
+                <TextInput style={ styles.name } onChangeText={ (name) => this.createFriend(name) }
                     placeholder="friends name" />
                 <Button title="Add Friend" 
                     onPress={ () => this.addUser(friend) } />
-                <Button title="View Friends &rarr;" 
-                    onPress={() => navigate("Second", {})} />
-                <TouchableHighlight
-                    onPress={ () => this.getUsers() }>
-                    <Text>Test</Text>
-                </TouchableHighlight>
             </View>
         )
     }
@@ -101,10 +99,11 @@ class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor: '#fff',
-        paddingTop: 40,
         alignItems: 'center',
     },
+    name: {
+        color: "#333",
+    }
 })
 
 export default Home
