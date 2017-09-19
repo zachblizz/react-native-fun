@@ -10,7 +10,7 @@ class UserListItem extends Component {
 
         return (
             <TouchableOpacity
-                onPress={ () => viewUser() }>
+                onPress={ () => this.props.nav('Profile', { user: item }) }>
                 <View style={{ flexDirection: 'row' }}>
                     <View>
                         <Text style={ styles.username }>

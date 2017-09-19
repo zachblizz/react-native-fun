@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native'
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, TextInput } from 'react-native'
 import moment from 'moment'
 import Nav from './Nav'
 import UserListItem from '../presentations/UserListItem'
@@ -12,6 +12,7 @@ class Friends extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            origUsers: [],
             users: []
         }
     }
@@ -26,15 +27,16 @@ class Friends extends Component {
         .then((resp) => resp.json())
         .then(responseData => {
             this.setState({
+                origUsers: responseData.users,
                 users: responseData.users
             })
         })
         .done()
     }
 
-    viewUser(user) {
-        alert(user)
-    }
+    // viewUser(user) {
+    //     alert(user)
+    // }
 
     deleteUser(id) {
         fetch("http://localhost:3040/api/deleteUser", {
@@ -62,21 +64,40 @@ class Friends extends Component {
     }
 
     _renderFriend(item) {
+        let { navigate } = this.props.navigation
         return (
             <View style={ styles.friendLayout }>
                 <UserListItem item={ item }
-                    viewUser={ () => this.viewUser(item._id) }
+                    nav={ navigate }
                     deleteUser={ () => this.deleteUser(item._id) } />
             </View>
         )
     }
 
+    filterUsers(username) {
+        let users = Object.assign([], this.state.origUsers)
+        let filtered = []
+        
+        if (username.length > 0) {
+            filtered = users.filter(usr => usr.username.indexOf(username) !== -1)
+        } else {
+            filtered = users
+        }
+
+        this.setState({
+            users: filtered
+        })
+    }
+
     render() {
         let { users } = this.state
-        let { navigate } = this.props.navigation
 
         return (
             <View style={ styles.container }>
+                <TextInput style={ styles.search }
+                    onChangeText={ (username) => this.filterUsers(username) }
+                    placeholder="search users"
+                />
                 <FlatList 
                     data={ users }
                     keyExtractor={ (friend, i) => i }
@@ -96,6 +117,9 @@ const styles = StyleSheet.create({
     friendLayout: {
         flexDirection: "column",
         marginBottom: 10,
+    },
+    search: {
+        marginBottom: 20
     }
 })
 
