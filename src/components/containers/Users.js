@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native'
 import moment from 'moment'
-import config from '../../config'
 import Nav from './Nav'
 import dateformat from 'dateformat'
+import UserListItem from '../presentations/UserListItem'
 
 class Friends extends Component {
     static navigationOptions = {
@@ -42,28 +42,11 @@ class Friends extends Component {
     }
 
     _renderFriend(item) {
-        let joinDate = dateformat(new Date(item.createdAt), "mmm dS, yyyy")
-
         return (
             <View style={ styles.friendLayout }>
-                <TouchableOpacity
-                    onPress={ () => this.viewUser(item) }>
-                    <View style={{ flexDirection: 'row' }}>
-                        <View>
-                            <Text style={ styles.username }>
-                                { item.username }
-                            </Text>
-                            <Text style={ styles.joined }>
-                                { joinDate }
-                            </Text>
-                        </View>
-                        <TouchableOpacity onpress={ () => this.deleteUser(item._id) }
-                            style={ styles.delete }>
-                            <Image style={ styles.deleteIcon }
-                                source={ config.images.deleteIcon } />
-                        </TouchableOpacity>
-                    </View>
-                </TouchableOpacity>
+                <UserListItem item={ item }
+                    viewUser={ (id) => this.viewUser(id) }
+                    deletUser={ (id) => this.deleteUser(id) } />
             </View>
         )
     }
