@@ -25,7 +25,7 @@ class Signup extends Component {
         })
     }
 
-    addUser(user) {
+    signup(user) {
         fetch("http://localhost:3040/api/signup", {
             method: "POST",
             headers: {
@@ -44,7 +44,7 @@ class Signup extends Component {
                     users: _users
                 })
             } else {
-                AlertIOS.alert("OOPS!", "User was not added...")
+                AlertIOS.alert("OOPS!", data.message.errors.username.message)
             }
         }).done()
     }
@@ -59,7 +59,7 @@ class Signup extends Component {
                     onChangeText={ (username) => this.createUser(username) }
                     placeholder="username" />
                 <Button title="Signup" 
-                    onPress={ () => this.addUser(user) } />
+                    onPress={ () => this.signup(user) } />
                 <Nav nav={ navigate } />
             </View>
         )
@@ -70,10 +70,11 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         paddingTop: 180,
-        height: 100+'%'
+        height: 100+'%',
+        width: 100+'%'
     },
     name: {
-        color: "#333"
+        color: "#333",
     }
 })
 
