@@ -75,23 +75,6 @@ const styles = StyleSheet.create({
     friendLayout: {
         flexDirection: "column",
         marginBottom: 10,
-    },
-    username: {
-        fontSize: 20,
-        color: "#333",
-    },
-    joined: {
-        fontSize: 10,
-        color: '#888'
-    },
-    delete: {
-        position: 'absolute', 
-        right: 10,
-        top: 10
-    },
-    deleteIcon: {
-        height: 20,
-        width: 20
     }
 })
 
