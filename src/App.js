@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { StackNavigator } from 'react-navigation'
-import Home from './components/containers/Home'
-import Friends from './components/containers/Friends'
+import Signup from './components/containers/Signup'
+import Users from './components/containers/Users'
 
 const Navigation = StackNavigator({
-    Home: { screen: Home },
-    Friends: { screen: Friends },
+    Signup: { screen: Signup },
+    Users: { screen: Users },
 })
 
 export default Navigation

@@ -1,5 +1,6 @@
 export default {
     images: {
-        friendIcon: require('../../assets/images/friends_filled.png')
+        userIcon: require('../../assets/images/users.png'),
+        deleteIcon: require('../../assets/images/delete.png')
     }
 }

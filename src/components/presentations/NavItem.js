@@ -8,9 +8,9 @@ class NavItem extends Component {
             <View>
                 <TouchableOpacity
                     onPress={() => this.props.nav(this.props.dest, {})}>
-                    <Image style={ styles.friendIcon } 
-                        source={ config.images.friendIcon } />
-                    <Text style={ styles.lbl }>Friends</Text>
+                    <Image style={ styles.icon } 
+                        source={ config.images.userIcon } />
+                    <Text style={ styles.lbl }>Users</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -18,10 +18,10 @@ class NavItem extends Component {
 }
 
 const styles = StyleSheet.create({
-    friendIcon: {
+    icon: {
         height: 30,
         width: 30,
-        left: 5
+        left: 1
     },
     lbl: {
         fontSize: 12,

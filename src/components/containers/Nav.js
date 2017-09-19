@@ -6,7 +6,7 @@ class Nav extends Component {
     render() {
         return (
             <View style={ styles.nav }>
-                <NavItem nav={ this.props.nav } dest="Friends" />
+                <NavItem nav={ this.props.nav } dest="Users" />
             </View>
         )
     }
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         width: 100+'%',
         height: 65,
-        backgroundColor: '#ff5252',
+        backgroundColor: '#333',
         justifyContent: 'center',
         alignItems: 'center'
     },

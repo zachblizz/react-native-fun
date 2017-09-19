@@ -12,9 +12,6 @@ class FriendFields extends Component {
                     <Button onPress={() => pressAddSub(-1) }
                         title="Sub" color="#FF5252" />
                 </View>
-                <Text style={ styles.age }>Age { count }</Text>
-                <Button onPress={ resetAge }
-                    title="Reset" color="#FF5252" />
             </View>
         )
     }
