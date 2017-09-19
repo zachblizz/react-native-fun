@@ -37,7 +37,28 @@ class Friends extends Component {
     }
 
     deleteUser(id) {
-        alert(id + " Deleted...")
+        fetch("http://localhost:3040/api/deleteUser", {
+            "method": "DELETE",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id: id
+            })
+        })
+        .then(resp => resp.json())
+        .then(responseData => {
+            if (responseData.err) {
+                alert(responseData.err)
+            } else {
+                alert("user was deleted")
+                let users = Object.assign([], this.state.users)
+                this.setState({
+                    users: users.filter(usr => { return usr._id !== id })
+                })
+            }
+        })
     }
 
     _renderFriend(item) {
