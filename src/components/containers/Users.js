@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react
 import moment from 'moment'
 import config from '../../config'
 import Nav from './Nav'
+import dateformat from 'dateformat'
 
 class Friends extends Component {
     static navigationOptions = {
@@ -41,6 +42,8 @@ class Friends extends Component {
     }
 
     _renderFriend(item) {
+        let joinDate = dateformat(new Date(item.createdAt), "mmm dS, yyyy")
+
         return (
             <View style={ styles.friendLayout }>
                 <TouchableOpacity
@@ -50,7 +53,9 @@ class Friends extends Component {
                             <Text style={ styles.username }>
                                 { item.username }
                             </Text>
-                            <Text style={ styles.joined }>{ item.createdAt }</Text>
+                            <Text style={ styles.joined }>
+                                { joinDate }
+                            </Text>
                         </View>
                         <TouchableOpacity onpress={ () => this.deleteUser(item._id) }
                             style={ styles.delete }>
