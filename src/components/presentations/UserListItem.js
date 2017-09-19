@@ -7,10 +7,10 @@ class UserListItem extends Component {
     render() {
         let { item, viewUser, deleteUser } = this.props
         let joinDate = dateformat(new Date(item.createdAt), "mmm dS, yyyy")
-        
+
         return (
             <TouchableOpacity
-                onPress={ () => viewUser(item._id) }>
+                onPress={ () => viewUser() }>
                 <View style={{ flexDirection: 'row' }}>
                     <View>
                         <Text style={ styles.username }>
@@ -20,7 +20,7 @@ class UserListItem extends Component {
                             { joinDate }
                         </Text>
                     </View>
-                    <TouchableOpacity onpress={ () => deleteUser(item._id) }
+                    <TouchableOpacity onpress={ () => deleteUser() }
                         style={ styles.delete }>
                         <Image style={ styles.deleteIcon }
                             source={ config.images.deleteIcon } />

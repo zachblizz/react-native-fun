@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native'
 import moment from 'moment'
 import Nav from './Nav'
-import dateformat from 'dateformat'
 import UserListItem from '../presentations/UserListItem'
 
 class Friends extends Component {
@@ -34,7 +33,7 @@ class Friends extends Component {
     }
 
     viewUser(user) {
-        alert(user._id)
+        alert(user)
     }
 
     deleteUser(id) {
@@ -45,8 +44,8 @@ class Friends extends Component {
         return (
             <View style={ styles.friendLayout }>
                 <UserListItem item={ item }
-                    viewUser={ (id) => this.viewUser(id) }
-                    deletUser={ (id) => this.deleteUser(id) } />
+                    viewUser={ () => this.viewUser(item._id) }
+                    deletUser={ () => this.deleteUser(item._id) } />
             </View>
         )
     }
