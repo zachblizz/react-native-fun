@@ -45,7 +45,7 @@ class Friends extends Component {
             <View style={ styles.friendLayout }>
                 <UserListItem item={ item }
                     viewUser={ () => this.viewUser(item._id) }
-                    deletUser={ () => this.deleteUser(item._id) } />
+                    deleteUser={ () => this.deleteUser(item._id) } />
             </View>
         )
     }

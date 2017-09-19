@@ -20,7 +20,7 @@ class UserListItem extends Component {
                             { joinDate }
                         </Text>
                     </View>
-                    <TouchableOpacity onpress={ () => deleteUser() }
+                    <TouchableOpacity onPress={ () => deleteUser() }
                         style={ styles.delete }>
                         <Image style={ styles.deleteIcon }
                             source={ config.images.deleteIcon } />
