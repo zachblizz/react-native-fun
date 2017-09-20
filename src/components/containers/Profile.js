@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import UserProfile from '../presentations/UserProfile'
 
 class Profile extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -16,10 +17,8 @@ class Profile extends Component {
 
     componentDidMount() {
         let { params } = this.props.navigation.state
-        this.setState({
-            user: params.user
-        })
-
+        
+        let user = params.user
         fetch("http://localhost:3040/api/postsByUser", {
             method: "POST",
             headers: {
@@ -32,15 +31,21 @@ class Profile extends Component {
         })
         .then(resp => resp.json())
         .then(data => {
-            alert(JSON.stringify(data))
+            this.setState({
+                posts: data.posts
+            })
+        })
+
+        this.setState({
+            user: user
         })
     }
 
     render() {
-        let { user } = this.state
-        return(
+        let { user, posts } = this.state
+        return (
             <View style={ styles.profile }>
-                <Text>Profile... { user._id }</Text>
+                <UserProfile user={ user } posts={ posts } />
             </View>
         )
     }
