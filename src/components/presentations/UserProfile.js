@@ -22,7 +22,7 @@ class UserProfile extends Component {
         let { user, posts } = this.props
         
         return (
-            <View style={ styles.profile }>
+            <View style={ styles.container }>
                 <View style={ styles.header }>
                     <Text style={ styles.username }>{ user.username }</Text>
                     <Text>Posts: { posts.length }</Text>
@@ -46,19 +46,25 @@ class UserProfile extends Component {
 }
 
 const styles = StyleSheet.create({
-    profile: {
+    container: {
         width: 100+'%',
         height: 100+'%'
     },
     header: {
+        position: 'absolute',
+        top: 0,
         width: 100+'%',
         height: 30+'%',
+        padding: 15,
         backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center'
     },
     username: {
         fontSize: 25
+    },
+    postContainer: {
+        top: 170
     },
     posts: {
         width: 100+'%',

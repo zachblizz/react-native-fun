@@ -52,10 +52,11 @@ class Post extends Component {
 const styles = StyleSheet.create({
     container: {
         width: 100+'%',
-        height: 100+'%',
-        padding: 10
+        height: 100+'%'
     },
     post: {
+        position: 'absolute',
+        top: 0,
         width: 100+'%',
         backgroundColor: '#fafafa',
         padding: 15,
@@ -70,6 +71,8 @@ const styles = StyleSheet.create({
         fontSize: 12
     },
     comments: {
+        // position: 'absolute',
+        top: 91,
         width: 100+'%',
         height: 75+'%',
     },
@@ -78,6 +81,10 @@ const styles = StyleSheet.create({
         paddingTop: 50
     },
     addCmt: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
+        padding: 10,
         backgroundColor: '#333',
         height: 10+'%',
         justifyContent: 'center',
