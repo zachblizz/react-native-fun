@@ -34,10 +34,6 @@ class Friends extends Component {
         .done()
     }
 
-    // viewUser(user) {
-    //     alert(user)
-    // }
-
     deleteUser(id) {
         fetch("http://localhost:3040/api/deleteUser", {
             "method": "DELETE",
