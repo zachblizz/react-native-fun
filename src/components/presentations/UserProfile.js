@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
         height: 100+'%'
     },
     header: {
-        position: 'absolute',
         top: 0,
         width: 100+'%',
         height: 30+'%',
@@ -62,9 +61,6 @@ const styles = StyleSheet.create({
     },
     username: {
         fontSize: 25
-    },
-    postContainer: {
-        top: 170
     },
     posts: {
         width: 100+'%',

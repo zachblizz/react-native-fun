@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
         height: 100+'%'
     },
     post: {
-        position: 'absolute',
         top: 0,
         width: 100+'%',
         backgroundColor: '#fafafa',
@@ -71,14 +70,14 @@ const styles = StyleSheet.create({
         fontSize: 12
     },
     comments: {
-        // position: 'absolute',
-        top: 91,
+        top: 0,
         width: 100+'%',
         height: 75+'%',
+        marginLeft: 15
     },
     noComments: {
         alignItems: 'center',
-        paddingTop: 50
+        paddingTop: 100
     },
     addCmt: {
         position: 'absolute',
