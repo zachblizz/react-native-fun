@@ -11,7 +11,9 @@ class PostItem extends Component {
                 <View style={ styles.postItem }>
                     { showUsername ? <Text>{ post._creator.username }</Text> : null }
                     <Text style={ styles.postHeader }>{ post.title }</Text>
-                    <Text style={ styles.postSubHeader }>cmts: { post._comments.length }</Text>
+                    <Text style={ styles.postSubHeader }>
+                        { post._comments.length } { post._comments.length > 1 ? "comments" : "comment" }
+                    </Text>
                     <Text style={ styles.postSubHeader }>{ created }</Text>
                 </View>
             </TouchableOpacity>
