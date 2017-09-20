@@ -7,7 +7,6 @@ class Nav extends Component {
         return (
             <View style={ styles.nav }>
                 <NavItem nav={ this.props.nav } dest="Users" />
-                <NavItem nav={ this.props.nav } dest="Profile" />
             </View>
         )
     }
@@ -20,7 +19,7 @@ const styles = StyleSheet.create({
         width: 100+'%',
         height: 65,
         backgroundColor: '#333',
-        justifyContent: 'center',
+        // justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row'
     },

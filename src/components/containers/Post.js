@@ -13,6 +13,10 @@ class Post extends Component {
         )
     }
 
+    createComment() {
+        alert('test comment...')
+    }
+
     render() {
         let { params, nav } = this.props.navigation.state
 
@@ -36,6 +40,10 @@ class Post extends Component {
                         </View>
                     }
                 </View>
+                <TouchableOpacity style={ styles.addCmt }
+                    onPress={ () => this.createComment() }>
+                    <Text style={{ color: '#fff' }}>Add Comment</Text>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -63,12 +71,18 @@ const styles = StyleSheet.create({
     },
     comments: {
         width: 100+'%',
-        height: 70+'%',
+        height: 75+'%',
         backgroundColor: '#eee'
     },
     noComments: {
         alignItems: 'center',
         paddingTop: 50
+    },
+    addCmt: {
+        backgroundColor: '#333',
+        height: 10+'%',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 
