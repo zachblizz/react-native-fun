@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import dateformat from 'dateformat'
+import PostItem from './PostItem'
 
 class UserProfile extends Component {
     _renderPost(item) {
         let created = dateformat(new Date(item.createdAt), "mmm dS, yyyy")
         return (
-            <View style={ styles.postItem }>
-                <Text style={ styles.postHeader }>{ item.title }</Text>
-                <Text style={ styles.postSubHeader }>cmts: { item._comments.length }</Text>
-                <Text style={ styles.postSubHeader }>{ created }</Text>
-            </View>
+            <PostItem post={ item } created={ created } showUsername={ false } />
         )
     }
 
@@ -50,16 +47,6 @@ const styles = StyleSheet.create({
         width: 100+'%',
         height: 70+'%',
         padding: 5
-    },
-    postItem: {
-        padding: 10,
-
-    },
-    postHeader: {
-        fontSize: 20
-    },
-    postSubHeader: {
-        fontSize: 10
     }
 })
 
