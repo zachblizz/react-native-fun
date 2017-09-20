@@ -27,17 +27,19 @@ class UserProfile extends Component {
                     <Text style={ styles.username }>{ user.username }</Text>
                     <Text>Posts: { posts.length }</Text>
                 </View>
-                { posts.length > 0 
-                    ? <View style={ styles.posts }>
-                        <FlatList 
-                        data={ posts }
-                        keyExtractor={ post => post._id }
-                        renderItem={({item}) => this._renderPosts(item)} />
-                    </View>
-                    : <View style={ styles.noPosts }>
-                        <Text>{ user.username } has no posts...</Text>
-                    </View>
-                }
+                <View style={ styles.postContainer }>
+                    { posts.length > 0 
+                        ? <View style={ styles.posts }>
+                            <FlatList 
+                            data={ posts }
+                            keyExtractor={ post => post._id }
+                            renderItem={({item}) => this._renderPosts(item)} />
+                        </View>
+                        : <View style={ styles.noPosts }>
+                            <Text>{ user.username } has no posts...</Text>
+                        </View>
+                    }
+                </View>
             </View>
         )
     }
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
     header: {
         width: 100+'%',
         height: 30+'%',
-        backgroundColor: '#eee',
+        backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center'
     },

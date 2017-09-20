@@ -20,7 +20,7 @@ class Comment extends Component {
 
 const styles = StyleSheet.create({
     comment: {
-        padding: 20,
+        padding: 10,
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderColor: '#d6d7da',
     },

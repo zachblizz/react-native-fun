@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
     post: {
         width: 100+'%',
-        backgroundColor: '#eee',
+        backgroundColor: '#fafafa',
         padding: 15,
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderColor: '#d6d7da',
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     comments: {
         width: 100+'%',
         height: 75+'%',
-        backgroundColor: '#eee'
     },
     noComments: {
         alignItems: 'center',
