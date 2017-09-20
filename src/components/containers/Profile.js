@@ -43,9 +43,11 @@ class Profile extends Component {
 
     render() {
         let { user, posts } = this.state
+        let { navigate } = this.props.navigation
+
         return (
             <View style={ styles.profile }>
-                <UserProfile user={ user } posts={ posts } />
+                <UserProfile user={ user } posts={ posts } nav={ navigate } />
             </View>
         )
     }
