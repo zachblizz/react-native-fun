@@ -35,8 +35,10 @@ class Posts extends Component {
         let { navigate } = this.props.navigation
         let created = dateformat(item.createdAt, "mmm dS, yyyy")
         return (
-            <PostItem post={ item } showUsername={ true } created={ created }
-                nav={ navigate } />
+            <View style={ styles.post }>
+                <PostItem post={ item } showUsername={ true } created={ created }
+                    nav={ navigate } />
+            </View>
         )
     }
 
