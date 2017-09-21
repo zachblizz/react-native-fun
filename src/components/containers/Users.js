@@ -75,7 +75,7 @@ class Friends extends Component {
         let filtered = []
         
         if (username.length > 0) {
-            filtered = users.filter(usr => usr.username.indexOf(username) !== -1)
+            filtered = users.filter(usr => usr.username.toLowerCase().indexOf(username.toLowerCase()) !== -1)
         } else {
             filtered = users
         }
