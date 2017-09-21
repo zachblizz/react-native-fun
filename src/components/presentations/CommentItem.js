@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import dateformat from 'dateformat'
 
-class Comment extends Component {
+class CommentItem extends Component {
     render() {
         let { comment } = this.props
         let cmtDate = dateformat(comment.createdAt, "mmm dS, yyyy")
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Comment
+export default CommentItem

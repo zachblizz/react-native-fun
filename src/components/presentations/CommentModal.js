@@ -3,7 +3,7 @@ import { View, Text, TextInput, Modal, StyleSheet, TouchableOpacity } from 'reac
 
 class CommentModal extends Component {
     render() {
-        let { post, visible, updateVisibility } = this.props
+        let { post, visible, comment, commentText, setVisibility } = this.props
 
         return (
             <Modal
@@ -12,6 +12,13 @@ class CommentModal extends Component {
                 transparent={ true }>
                 <View style={ styles.modal }>
                     <View style={ styles.container }>
+                        <View style={ styles.close }>
+                            <TouchableOpacity
+                                onPress={ () => setVisibility() }
+                            >
+                                <Text style={{ fontSize: 15 }}>x</Text>
+                            </TouchableOpacity>
+                        </View>
                         <Text>{ post.text }</Text>
                         <View style={ styles.commentInfo }>
                             <TextInput
@@ -19,10 +26,11 @@ class CommentModal extends Component {
                                 maxLength={ 120 }
                                 placeholder={"Type comment here"}
                                 multiline={ true }
+                                onChangeText={(text) => commentText(text)}
                             />
                             <TouchableOpacity
-                                onPress={ () => { updateVisibility() } }>
-                                <Text style={ styles.addBtn }>add</Text>
+                                onPress={ () => { comment() } }>
+                                <Text style={ styles.addBtn }>post</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -40,6 +48,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    close: {
+        position: 'absolute',
+        top: 10,
+        right: 10
+    },
     container: {
         padding: 20,
         height: 30+'%',
@@ -47,20 +60,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#ddd'
     },
     commentInfo: {
-        // position: 'absolute',
         padding: 5,
         alignItems: 'center',
         flexDirection: 'row',
-        bottom: 5,
+        marginTop: 100,
         width: 100+'%',
         justifyContent: 'center',
-        backgroundColor: '#ff5252'
     },
     textInput: {
-        width: 90+'%'
+        width: 90+'%',
+        fontSize: 15
     },
     addBtn: {
         marginTop: 4,
+        right: -10,
         backgroundColor: '#0A8754',
         color: '#fff',
         padding: 5

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
-import Comment from '../presentations/Comment'
+import CommentItem from '../presentations/CommentItem'
 import CommentModal from '../presentations/CommentModal'
 
 class Post extends Component {
@@ -11,19 +11,66 @@ class Post extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            addComment: false
+            addComment: false,
+            comment: {},
+            comments: []
         }
+    }
+
+    componentDidMount() {
+        let { params } = this.props.navigation.state
+        let { comment } = this.state
+        comment.userId = "58aa1b9c11bc62b85c514888"
+
+        this.setState({
+            comments: params.post._comments
+        })
     }
 
     _renderComment(item) {
         return (
-            <Comment comment={ item } />
+            <CommentItem comment={ item } />
         )
     }
 
-    createComment() {
+    commentContent(text) {
+        let comment = Object.assign({}, this.state.comment)
+        comment.text = text
         this.setState({
-            addComment: !this.state.addComment
+            comment: comment
+        })
+    }
+
+    commentModal(change) {
+        this.setState({
+            addComment: change ? change : !this.state.addComment
+        })
+    }
+
+    createComment(postId) {
+        let { comment, comments } = this.state
+
+        fetch("http://localhost:3040/api/comment", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                postId: postId,
+                text: comment.text,
+                userId: comment.userId
+            })
+        })
+        .then(resp => resp.json())
+        .then(resp => {
+            if (resp.success) {
+                comments.push(resp.data)
+                this.setState({
+                    addComment: !this.state.addComment,
+                    comments: comments
+                })
+            }
         })
     }
 
@@ -51,14 +98,16 @@ class Post extends Component {
                     }
                 </View>
                 <TouchableOpacity style={ styles.addCmt }
-                    onPress={ () => this.createComment() }>
+                    onPress={ () => this.commentModal() }>
                     <Text style={{ color: '#fff' }}>Add Comment</Text>
                 </TouchableOpacity>
                 { this.state.addComment 
                     ? <CommentModal 
                         post={ params.post } 
                         visible={ this.state.addComment }
-                        updateVisibility={ () => this.createComment() } /> 
+                        setVisibility={ () => this.commentModal(false) }
+                        commentText={ (text) => this.commentContent(text) }
+                        comment={ () => this.createComment(params.post._id) } /> 
                     : null }
             </View>
         )
