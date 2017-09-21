@@ -4,13 +4,12 @@ import config from '../../config'
 
 class PostItem extends Component {
     render() {
-        let { post, showUsername, created } = this.props
+        let { post, showUsername, created, nav } = this.props
 
         return (
             <TouchableOpacity
-                onPress={ () => this.props.nav('Post', { post: post, nav: this.props.nav }) }>
+                onPress={ () => nav('Post', { post: post, nav: nav }) }>
                 <View style={ styles.postItem }>
-                    { showUsername ? <Text>{ post._creator.username }</Text> : null }
                     <Text style={ styles.postHeader }>{ post.title }</Text>
                     <View style={ styles.commentContainer }>
                         <Image style={ styles.commentIcon }
@@ -19,6 +18,7 @@ class PostItem extends Component {
                             { post._comments.length }  |  { created }
                         </Text>
                     </View>
+                    { showUsername ? <Text>{ post._creator.username }</Text> : null }
                 </View>
             </TouchableOpacity>
         )
@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
     },
     commentContainer: {
         flexDirection: 'row', 
-        marginTop: 3
+        marginTop: 3,
+        marginBottom: 3
     },
     commentIcon: {
         height: 10,

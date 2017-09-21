@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Image } from 'react-native'
 import dateformat from 'dateformat'
 import PostItem from './PostItem'
+import config from '../../config'
 
 class UserProfile extends Component {
     viewPost(id) {
@@ -24,6 +25,8 @@ class UserProfile extends Component {
         return (
             <View>
                 <View style={ styles.header }>
+                    <Image style={{ marginBottom: 10 }}
+                        source={ config.images.userProfileIcon } />
                     <Text style={ styles.username }>{ user.username }</Text>
                     <Text style={{ color: '#aaa', marginTop: 10 }}>Posts: { posts.length }</Text>
                 </View>
@@ -48,7 +51,7 @@ class UserProfile extends Component {
 const styles = StyleSheet.create({
     header: {
         width: 100+'%',
-        height: 30+'%',
+        height: 150,
         backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center'

@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
         right: 10,
         padding: 10,
         backgroundColor: '#333',
-        height: 10+'%',
+        height: 33,
         justifyContent: 'center',
         alignItems: 'center'
     },

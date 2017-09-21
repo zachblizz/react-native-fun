@@ -4,13 +4,14 @@ import config from '../../config'
 
 class NavItem extends Component {
     render() {
+        let { dest, icon } = this.props
+
         return (
             <View style={ styles.navItem }>
                 <TouchableOpacity
-                    onPress={() => this.props.nav(this.props.dest, {})}>
+                    onPress={() => this.props.nav(dest, {})}>
                     <Image style={ styles.icon } 
-                        source={ config.images.userIcon } />
-                    <Text style={ styles.lbl }>{ this.props.dest }</Text>
+                        source={ config.images[icon] } />
                 </TouchableOpacity>
             </View>
         )

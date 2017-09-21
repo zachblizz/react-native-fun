@@ -6,7 +6,8 @@ class Nav extends Component {
     render() {
         return (
             <View style={ styles.nav }>
-                <NavItem nav={ this.props.nav } dest="Users" />
+                <NavItem nav={ this.props.nav } dest="Users" icon="userIcon" />
+                <NavItem nav={ this.props.nav } dest="Posts" icon="postsIcon" />                
             </View>
         )
     }
