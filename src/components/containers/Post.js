@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native'
 import CommentItem from '../presentations/CommentItem'
 import CommentModal from '../presentations/CommentModal'
+import config from '../../config'
 
 class Post extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -76,15 +77,22 @@ class Post extends Component {
     }
 
     render() {
-        let { params, nav } = this.props.navigation.state
+        let { params } = this.props.navigation.state
+        let { navigate } = this.props.navigation
 
         return (
             <View style={ styles.container }>
                 <View style={ styles.post }>
                     <Text style={ styles.content }>{ params.post.text }</Text>
                     <TouchableOpacity
-                        onPress={ () => nav('Profile', { user: params.post._creator }) }>
-                        <Text style={ styles.author }>{ params.post._creator.username }</Text>
+                        onPress={ () => navigate('Profile', { user: params.post._creator }) }>
+                        <View style={{ flexDirection: 'row' }}>
+                            <Image style={ styles.userProfileIcon }
+                                source={ config.images.userProfileIcon } />
+                            <Text style={ styles.author }>
+                                { params.post._creator.username }
+                            </Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
                 <View style={ styles.comments }>
@@ -133,7 +141,8 @@ const styles = StyleSheet.create({
     },
     author: {
         marginTop: 10,
-        fontSize: 12
+        fontSize: 12,
+        color: '#3E7CB1'
     },
     comments: {
         top: 0,
@@ -154,6 +163,12 @@ const styles = StyleSheet.create({
         height: 10+'%',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    userProfileIcon: { 
+        height: 15, 
+        width: 15, 
+        marginTop: 9, 
+        marginRight: 5 
     }
 })
 

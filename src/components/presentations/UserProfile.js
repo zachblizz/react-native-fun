@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import dateformat from 'dateformat'
 import PostItem from './PostItem'
-import CreatePostBtn from './CreatePostBtn'
 
 class UserProfile extends Component {
     viewPost(id) {
@@ -41,7 +40,6 @@ class UserProfile extends Component {
                         </View>
                     }
                 </View>
-                <CreatePostBtn />
             </View>
         )
     }
@@ -57,6 +55,9 @@ const styles = StyleSheet.create({
     },
     username: {
         fontSize: 25
+    },
+    postContainer: {
+        padding: 10
     },
     posts: {
         width: 100+'%',

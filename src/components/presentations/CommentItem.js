@@ -11,7 +11,9 @@ class CommentItem extends Component {
             <View style={ styles.comment }>
                 <Text>{ comment.text }</Text>
                 <View style={{ flexDirection: 'row', marginTop: 5 }}>
-                    <Text style={ styles.smaller }>{ comment._creator.username } | { cmtDate }</Text>
+                    <Text style={ styles.smaller }>
+                        { comment._creator.username }  |  { cmtDate }
+                    </Text>
                 </View>
             </View>
         )
