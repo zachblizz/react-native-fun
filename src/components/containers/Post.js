@@ -20,7 +20,7 @@ class Post extends Component {
     componentDidMount() {
         let { params } = this.props.navigation.state
         let { comment } = this.state
-        comment.userId = "58aa1b9c11bc62b85c514888"
+        comment.userId = "59c1404530b12a2592c4bec7"
 
         this.setState({
             comments: params.post._comments
@@ -48,7 +48,8 @@ class Post extends Component {
     }
 
     createComment(postId) {
-        let { comment, comments } = this.state
+        let { comment } = this.state
+        let comments = Object.assign([], this.state.comments)
 
         fetch("http://localhost:3040/api/comment", {
             method: 'POST',

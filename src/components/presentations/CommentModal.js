@@ -7,16 +7,15 @@ class CommentModal extends Component {
 
         return (
             <Modal
-                animationType="slide"
+                animationType="fade"
                 visible={ visible }
                 transparent={ true }>
                 <View style={ styles.modal }>
                     <View style={ styles.container }>
                         <View style={ styles.close }>
                             <TouchableOpacity
-                                onPress={ () => setVisibility() }
-                            >
-                                <Text style={{ fontSize: 15 }}>x</Text>
+                                onPress={ () => setVisibility() } >
+                                <Text style={{ fontSize: 20 }}>&times;</Text>
                             </TouchableOpacity>
                         </View>
                         <Text>{ post.text }</Text>
@@ -60,12 +59,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#ddd'
     },
     commentInfo: {
+        position: 'absolute',
         padding: 5,
+        bottom: 0,
+        left: 20,
         alignItems: 'center',
         flexDirection: 'row',
-        marginTop: 100,
         width: 100+'%',
         justifyContent: 'center',
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderColor: '#aaa',
     },
     textInput: {
         width: 90+'%',
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
     addBtn: {
         marginTop: 4,
         right: -10,
-        backgroundColor: '#0A8754',
+        backgroundColor: '#333',
         color: '#fff',
         padding: 5
     }

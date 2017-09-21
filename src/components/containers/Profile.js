@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 import UserProfile from '../presentations/UserProfile'
 
 class Profile extends Component {
@@ -46,19 +46,9 @@ class Profile extends Component {
         let { navigate } = this.props.navigation
 
         return (
-            <View style={ styles.profile }>
-                <UserProfile user={ user } posts={ posts } nav={ navigate } />
-            </View>
+            <UserProfile user={ user } posts={ posts } nav={ navigate } />
         )
     }
 }
-
-const styles = StyleSheet.create({
-    profile: {
-        height: 100+'%',
-        width: 100+'%',
-        padding: 20
-    }
-})
 
 export default Profile

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     postSubHeader: {
-        fontSize: 10
+        fontSize: 10,
     },
     commentContainer: {
         flexDirection: 'row', 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import dateformat from 'dateformat'
 import PostItem from './PostItem'
+import CreatePostBtn from './CreatePostBtn'
 
 class UserProfile extends Component {
     viewPost(id) {
@@ -22,39 +23,34 @@ class UserProfile extends Component {
         let { user, posts } = this.props
         
         return (
-            <View style={ styles.container }>
+            <View>
                 <View style={ styles.header }>
                     <Text style={ styles.username }>{ user.username }</Text>
-                    <Text>Posts: { posts.length }</Text>
+                    <Text style={{ color: '#aaa', marginTop: 10 }}>Posts: { posts.length }</Text>
                 </View>
                 <View style={ styles.postContainer }>
                     { posts.length > 0 
                         ? <View style={ styles.posts }>
                             <FlatList 
-                            data={ posts }
-                            keyExtractor={ post => post._id }
-                            renderItem={({item}) => this._renderPosts(item)} />
+                                data={ posts }
+                                keyExtractor={ post => post._id }
+                                renderItem={({item}) => this._renderPosts(item)} />
                         </View>
                         : <View style={ styles.noPosts }>
                             <Text>{ user.username } has no posts...</Text>
                         </View>
                     }
                 </View>
+                <CreatePostBtn />
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        width: 100+'%',
-        height: 100+'%'
-    },
     header: {
-        top: 0,
         width: 100+'%',
         height: 30+'%',
-        padding: 15,
         backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center'
