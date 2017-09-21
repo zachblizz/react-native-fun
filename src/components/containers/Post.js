@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
 import Comment from '../presentations/Comment'
+import CommentModal from '../presentations/CommentModal'
 
 class Post extends Component {
     static navigationOptions = ({ navigation }) => ({
         title: `${navigation.state.params.post.title}`,
     })
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            addComment: false
+        }
+    }
 
     _renderComment(item) {
         return (
@@ -14,7 +22,9 @@ class Post extends Component {
     }
 
     createComment() {
-        alert('test comment...')
+        this.setState({
+            addComment: !this.state.addComment
+        })
     }
 
     render() {
@@ -44,6 +54,12 @@ class Post extends Component {
                     onPress={ () => this.createComment() }>
                     <Text style={{ color: '#fff' }}>Add Comment</Text>
                 </TouchableOpacity>
+                { this.state.addComment 
+                    ? <CommentModal 
+                        post={ params.post } 
+                        visible={ this.state.addComment }
+                        updateVisibility={ () => this.createComment() } /> 
+                    : null }
             </View>
         )
     }
