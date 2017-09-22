@@ -11,5 +11,8 @@ export default {
         usersUnfocus: require('../../assets/images/users_unfocus.png'),
         newfocus: require('../../assets/images/new_focus.png'),
         newUnfocus: require('../../assets/images/new_unfocus.png'),
+    },
+    constants: {
+        HOST_IP: '192.168.1.109'
     }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Text, Button, TextInput, TouchableHighlight, AlertIOS } from 'react-native'
 import FriendFields from '../presentations/FriendFields'
 import Nav from './Nav'
+import config from '../../config'
 
 class Signup extends Component {
     static navigationOptions = {
@@ -26,7 +27,7 @@ class Signup extends Component {
     }
 
     signup(user) {
-        fetch("http://localhost:3040/api/signup", {
+        fetch("http://" + config.constants.HOST_IP + ":3040/api/signup", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',

@@ -18,7 +18,7 @@ class PostItem extends Component {
                             { post._comments.length }  |  { created }
                         </Text>
                     </View>
-                    { showUsername ? <Text style={[ styles.postSubHeader, { color: "#666" } ]}>{ post._creator.username }</Text> : null }
+                    { showUsername ? <Text style={[ styles.postSubHeader, { color: "#987b8e" } ]}>{ post._creator.username }</Text> : null }
                 </View>
             </TouchableOpacity>
         )
@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
     postHeader: {
         fontSize: 20,
         marginBottom: 3,
-        color: '#EA9010'
+        color: '#542344'
     },
     postSubHeader: {
         fontSize: 10,
-        color: '#888',
+        color: '#764e69',
         marginBottom: 2
     },
     commentContainer: {

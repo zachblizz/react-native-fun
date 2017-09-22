@@ -26,7 +26,7 @@ class NewPost extends Component {
     post() {
         let { post } = this.state
         if (post.title !== '' && (post.text !== '' || post.link !== '')) {
-            fetch("http://localhost:3040/api/post", {
+            fetch("http://" + config.constants.HOST_IP + ":3040/api/post", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
