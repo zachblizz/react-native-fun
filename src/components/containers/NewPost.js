@@ -24,20 +24,25 @@ class NewPost extends Component {
     }
 
     post() {
-        fetch("http://localhost:3040/api/post", {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(this.state.post)
-        })
-        .then(resp => resp.json())
-        .then(resp => {
-            if (resp.success) {
-                AlertIOS.alert("Nice", "Message Posted!")
-            }
-        })
+        let { post } = this.state
+        if (post.title !== '' && (post.text !== '' || post.link !== '')) {
+            fetch("http://localhost:3040/api/post", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(post)
+            })
+            .then(resp => resp.json())
+            .then(resp => {
+                if (resp.success) {
+                    AlertIOS.alert("Nice", "Message Posted!")
+                }
+            })
+        } else {
+            AlertIOS.alert('DOH!!', "Please provie the Title and the Text, or Link for your post!")
+        }
     }
 
     render() {

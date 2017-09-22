@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
         borderColor: '#d6d7da',
     },
     smaller: {
-        fontSize: 10
+        fontSize: 10,
+        color: '#555'
     }
 })
 

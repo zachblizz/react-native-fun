@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     },
     postHeader: {
         fontSize: 20,
-        marginBottom: 3
+        marginBottom: 3,
+        color: '#EA9010'
     },
     postSubHeader: {
         fontSize: 10,

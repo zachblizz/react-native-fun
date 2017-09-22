@@ -43,18 +43,18 @@ export default TabNavigator({
                 )
             }
         },
-        // ProfileTab: {
-        //     screen: Users,
-        //     path: '/profile',
-        //     navigationOptions: {
-        //         title: 'Profile',
-        //         tabBarLabel: '',
-        //         tabBarIcon: ({ focused }) => (
-        //             <Image style={ styles.icon }
-        //                 source={ focused ? config.images.userProfileIcon : config.images.userProfileUnfocus } />
-        //         )
-        //     }
-        // },
+        ProfileTab: {
+            screen: Users,
+            path: '/profile',
+            navigationOptions: {
+                title: 'Profile',
+                tabBarLabel: '',
+                tabBarIcon: ({ focused }) => (
+                    <Image style={ styles.icon }
+                        source={ focused ? config.images.userProfileIcon : config.images.userProfileUnfocus } />
+                )
+            }
+        },
 }, {
         tabBarPostition: 'bottom',
         animationEnabled: false,
@@ -64,8 +64,8 @@ export default TabNavigator({
 // blue color: #3A7CA5
 const styles = StyleSheet.create({
     icon: {
-        height: 25,
-        width: 25,
+        height: 20,
+        width: 20,
         marginTop: 10
     }
 })
