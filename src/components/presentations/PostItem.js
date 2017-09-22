@@ -11,7 +11,7 @@ class PostItem extends Component {
                 onPress={ () => nav('Post', { post: post, nav: nav }) }>
                 <View style={ styles.postItem }>
                     <Text style={ styles.postHeader }>{ post.title }</Text>
-                    <Text style={ styles.text }>{ post.text }</Text>
+                    <Text style={ styles.text }>{ post.text.length < 140 ? post.text : post.text.substring(0, 140) + "..." }</Text>
                     <View style={ styles.commentContainer }>
                         <Image style={ styles.commentIcon }
                             source={ config.images.commentIcon } />

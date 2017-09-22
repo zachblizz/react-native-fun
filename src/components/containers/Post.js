@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     comments: {
         top: 0,
         width: 100+'%',
-        height: 75+'%',
+        height: 70+'%',
         marginLeft: 15
     },
     noComments: {
