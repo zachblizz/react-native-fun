@@ -84,6 +84,14 @@ class Post extends Component {
             <View style={ styles.container }>
                 <View style={ styles.post }>
                     <Text style={ styles.content }>{ params.post.text }</Text>
+                    { 
+                        params.post.link !== "" 
+                        ? 
+                        <Text style={ styles.link }>
+                            { params.post.link }
+                        </Text> 
+                        : null 
+                    }
                     <TouchableOpacity
                         onPress={ () => navigate('Profile', { user: params.post._creator }) }>
                         <View style={{ flexDirection: 'row' }}>
@@ -138,6 +146,12 @@ const styles = StyleSheet.create({
     },
     content: {
         fontSize: 15
+    },
+    link: {
+        marginTop: 10,
+        marginBottom: 10,
+        color: 'blue',
+        fontSize: 10
     },
     author: {
         marginTop: 10,
