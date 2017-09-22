@@ -50,14 +50,14 @@ class NewPost extends Component {
             <View style={ styles.container }>
                 <TextInput placeholder="title" style={ styles.input }
                     onChangeText={ (title) => this.updatePost(title, "title") } />
-                <TextInput placeholder="type your post here" multiline={ true }
+                <TextInput placeholder="type your post here (max 140 chars)" multiline={ true }
                     style={[ styles.input, styles.large ]} maxLength={ 140 }
                     onChangeText={ (text) => this.updatePost(text, "text") } />
                 <TextInput placeholder="link" style={ styles.input }
                     onChangeText={ (link) => this.updatePost(link, "link") } />
-                <TouchableOpacity
+                <TouchableOpacity style={ styles.create }
                     onPress={ () => this.post() }>
-                    <Text>Create Post</Text>
+                    <Text style={{ color: '#fff' }}>Create Post</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -68,6 +68,11 @@ const styles = StyleSheet.create({
     container: {
         padding: 20,
         height: 100+'%',
+    },
+    create: {
+        padding: 10,
+        width: 100,
+        backgroundColor: '#3A7CA5'
     },
     input: {
         backgroundColor: '#fff',
