@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, FlatList, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import PostItem from '../presentations/PostItem'
 import dateformat from 'dateformat'
+import config from '../../config'
 
 class Posts extends Component {
     static navigationOptions = {
@@ -16,7 +17,7 @@ class Posts extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3040/api/posts", {
+        fetch("http://" + config.constants.HOST_IP + ":3040/api/posts", {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -35,12 +36,10 @@ class Posts extends Component {
         let { navigate } = this.props.navigation
         let created = dateformat(item.createdAt, "mmm dS, yyyy")
         return (
-            <View style={ styles.post }>
-                <PostItem post={ item } 
-                    showUsername={ true } 
-                    created={ created }
-                    nav={ navigate } />
-            </View>
+            <PostItem post={ item } 
+                showUsername={ true } 
+                created={ created }
+                nav={ navigate } />
         )
     }
 

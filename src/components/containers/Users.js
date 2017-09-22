@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, TextInput } 
 import moment from 'moment'
 import Nav from './Nav'
 import UserListItem from '../presentations/UserListItem'
+import config from '../../config'
 
 class Users extends Component {
     static navigationOptions = {
@@ -18,7 +19,7 @@ class Users extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3040/api/getUsers", { 
+        fetch("http://" + config.constants.HOST_IP + ":3040/api/getUsers", { 
             "method": "GET", 
             headers: {
                 'Accept': 'application/json',
@@ -35,7 +36,7 @@ class Users extends Component {
     }
 
     deleteUser(id) {
-        fetch("http://localhost:3040/api/deleteUser", {
+        fetch("http://" + config.constants.HOST_IP + ":3040/api/deleteUser", {
             "method": "DELETE",
             headers: {
                 'Accept': 'application/json',

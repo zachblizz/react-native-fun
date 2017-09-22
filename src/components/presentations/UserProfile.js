@@ -60,7 +60,9 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     postContainer: {
-        padding: 10
+        padding: 10,
+        height: 90+'%',
+        marginBottom: 10
     },
     posts: {
         width: 100+'%',

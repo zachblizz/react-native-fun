@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import UserProfile from '../presentations/UserProfile'
+import config from '../../config'
 
 class Profile extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -19,7 +20,7 @@ class Profile extends Component {
         let { params } = this.props.navigation.state
         
         let user = params.user
-        fetch("http://localhost:3040/api/postsByUser", {
+        fetch("http://" + config.constants.HOST_IP + ":3040/api/postsByUser", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',

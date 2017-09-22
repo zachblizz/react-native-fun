@@ -11,6 +11,7 @@ class PostItem extends Component {
                 onPress={ () => nav('Post', { post: post, nav: nav }) }>
                 <View style={ styles.postItem }>
                     <Text style={ styles.postHeader }>{ post.title }</Text>
+                    <Text style={ styles.text }>{ post.text }</Text>
                     <View style={ styles.commentContainer }>
                         <Image style={ styles.commentIcon }
                             source={ config.images.commentIcon } />
@@ -28,15 +29,22 @@ class PostItem extends Component {
 const styles = StyleSheet.create({
     postItem: {
         padding: 20,
+        height: 150,
         backgroundColor: '#fff',
         marginBottom: 3,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: '#d6d7da',
+        justifyContent: 'center'
     },
     postHeader: {
         fontSize: 20,
         marginBottom: 3,
         color: '#EA9010'
+    },
+    text: {
+        marginTop: 3,
+        marginBottom: 3,
+        fontSize: 12
     },
     postSubHeader: {
         fontSize: 10,

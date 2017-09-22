@@ -10,7 +10,7 @@ class NewPost extends Component {
                 title: '',
                 text: '',
                 link: '',
-                userId: '58aa129fbb4f4cb587e72f8d'
+                userId: '59c11db17083310827553b5c'
             }
         }
     }
@@ -26,7 +26,7 @@ class NewPost extends Component {
     post() {
         let { post } = this.state
         if (post.title !== '' && (post.text !== '' || post.link !== '')) {
-            fetch("http://localhost:3040/api/post", {
+            fetch("http://" + config.constants.HOST_IP + ":3040/api/post", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
