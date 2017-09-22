@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, TextInput } 
 import moment from 'moment'
 import Nav from './Nav'
 import UserListItem from '../presentations/UserListItem'
-import CreatePostBtn from '../presentations/CreatePostBtn'
 
 class Users extends Component {
     static navigationOptions = {

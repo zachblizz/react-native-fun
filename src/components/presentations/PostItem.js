@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     postItem: {
         padding: 20,
         backgroundColor: '#fff',
-        marginBottom: 10,
+        marginBottom: 3,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: '#d6d7da',
     },

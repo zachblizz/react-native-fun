@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import UserProfile from '../presentations/UserProfile'
-import CreatePostBtn from '../presentations/CreatePostBtn'
 
 class Profile extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -49,7 +48,6 @@ class Profile extends Component {
         return (
             <View style={{ height: 100+'%' }}>
                 <UserProfile user={ user } posts={ posts } nav={ navigate } />
-                <CreatePostBtn />
             </View>
         )
     }
