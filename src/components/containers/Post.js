@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, ScrollView, RefreshControl } from 'react-native'
 import CommentItem from '../presentations/CommentItem'
 import CommentModal from '../presentations/CommentModal'
 import config from '../../config'
@@ -14,7 +14,8 @@ class Post extends Component {
         this.state = {
             addComment: false,
             comment: {},
-            comments: []
+            comments: [],
+            refreshing: false
         }
     }
 
@@ -76,6 +77,34 @@ class Post extends Component {
         })
     }
 
+    _onRefresh(postId) {
+        this.setState({
+            refreshing: true
+        })
+        let comments = Object.assign([], this.state.comments)
+
+        fetch("http://" + config.constants.HOST_IP + ":3040/api/postById", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id: postId
+            })
+        })
+        .then(resp => resp.json())
+        .then(resp => {
+            if (resp.comments) {
+                comments = resp.comments
+                this.setState({
+                    comments,
+                    refreshing: false
+                })
+            }
+        })
+    }
+
     render() {
         let { params } = this.props.navigation.state
         let { navigate } = this.props.navigation
@@ -105,13 +134,26 @@ class Post extends Component {
                 </View>
                 <View style={ styles.comments }>
                     { params.post._comments.length > 0 
-                        ? <FlatList 
-                            data={ params.post._comments } 
-                            keyExtractor={ comment => comment._id }
-                            renderItem={ ({item}) => this._renderComment(item) } /> 
-                        : <View style={ styles.noComments }>
+                        ? <ScrollView refreshControl={
+                                <RefreshControl
+                                    refreshing={ this.state.refreshing }
+                                    onRefresh={ () => this._onRefresh(params.post._id) }
+                                />
+                            }>
+                            <FlatList 
+                                data={ params.post._comments } 
+                                keyExtractor={ comment => comment._id }
+                                renderItem={ ({item}) => this._renderComment(item) } /> 
+                        </ScrollView>
+                        : <ScrollView style={ styles.noComments }
+                            refreshControl={
+                                <RefreshControl
+                                    refreshing={ this.state.refreshing }
+                                    onRefresh={ () => this._onRefresh(params.post._id) }
+                                />
+                            }>
                             <Text>No Comments Yet...</Text>
-                        </View>
+                        </ScrollView>
                     }
                 </View>
                 <TouchableOpacity style={ styles.addCmt }

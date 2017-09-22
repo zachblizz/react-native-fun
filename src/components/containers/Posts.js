@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, FlatList, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, FlatList, Text, ScrollView, TouchableOpacity, StyleSheet, RefreshControl } from 'react-native'
 import PostItem from '../presentations/PostItem'
 import dateformat from 'dateformat'
 import config from '../../config'
@@ -12,7 +12,8 @@ class Posts extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            posts: []
+            posts: [],
+            refreshing: false
         }
     }
 
@@ -45,17 +46,45 @@ class Posts extends Component {
         )
     }
 
+    _onRefresh() {
+        let posts = Object.assign([], this.state.posts)
+        this.setState({
+            refreshing: true
+        })
+        fetch("http://" + config.constants.HOST_IP + ":3040/api/posts", {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(resp => resp.json())
+        .then(resp => {
+            posts = resp.data
+            this.setState({
+                posts,
+                refreshing: false
+            })
+        })
+    }
+
     render() {
         let { posts } = this.state
 
         return (
-            <View style={ styles.postsContainer }>
+            <ScrollView style={ styles.postsContainer }
+                refreshControl={
+                <RefreshControl
+                    refreshing={ this.state.refreshing }
+                    onRefresh={ this._onRefresh.bind(this) }
+                />
+            }>
                 <FlatList 
                     data={ posts }
                     keyExtractor={ item => item._id }
                     renderItem={ ({item}) => this._renderPosts(item) }
                 />
-            </View>
+            </ScrollView>
         )
     }
 }
