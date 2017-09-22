@@ -10,7 +10,7 @@ class NewPost extends Component {
                 title: '',
                 text: '',
                 link: '',
-                userId: '58aa1b9c11bc62b85c514888'
+                userId: '58aa129fbb4f4cb587e72f8d'
             }
         }
     }
