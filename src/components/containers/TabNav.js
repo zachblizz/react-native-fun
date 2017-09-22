@@ -3,10 +3,10 @@ import { Image, Text, StyleSheet } from 'react-native'
 import { TabNavigator } from 'react-navigation'
 import config from '../../config'
 import Posts from './Posts'
+import NewPost from './NewPost'
 import Users from './Users'
 
-export default TabNavigator(
-    {
+export default TabNavigator({
         MainTab: {
             screen: Posts,
             path: '/',
@@ -20,7 +20,7 @@ export default TabNavigator(
             }
         },
         NewPost: {
-            screen: Posts,
+            screen: NewPost,
             path: '/newPost',
             navigationOptions: {
                 title: 'Post',
@@ -43,26 +43,25 @@ export default TabNavigator(
                 )
             }
         },
-        ProfileTab: {
-            screen: Users,
-            path: '/profile',
-            navigationOptions: {
-                title: 'Profile',
-                tabBarLabel: '',
-                tabBarIcon: ({ focused }) => (
-                    <Image style={ styles.icon }
-                        source={ focused ? config.images.userProfileIcon : config.images.userProfileUnfocus } />
-                )
-            }
-        }
-    },
-    {
+        // ProfileTab: {
+        //     screen: Users,
+        //     path: '/profile',
+        //     navigationOptions: {
+        //         title: 'Profile',
+        //         tabBarLabel: '',
+        //         tabBarIcon: ({ focused }) => (
+        //             <Image style={ styles.icon }
+        //                 source={ focused ? config.images.userProfileIcon : config.images.userProfileUnfocus } />
+        //         )
+        //     }
+        // },
+}, {
         tabBarPostition: 'bottom',
         animationEnabled: false,
-        swipeEnabled: true
-    }
-)
-// 3A7CA5
+        swipeEnabled: false
+})
+
+// blue color: #3A7CA5
 const styles = StyleSheet.create({
     icon: {
         height: 25,

@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     },
     friendLayout: {
         flexDirection: "column",
-        marginBottom: 10,
+        marginBottom: 5,
     },
     search: {
         marginBottom: 20

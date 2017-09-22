@@ -11,7 +11,9 @@ class UserListItem extends Component {
         return (
             <TouchableOpacity
                 onPress={ () => this.props.nav('Profile', { user: item }) }>
-                <View style={{ flexDirection: 'row' }}>
+                <View style={ styles.userContainer }>
+                    <Image style={{ marginRight: 30, marginLeft: 15 }}
+                        source={ config.images.userProfileIcon } />
                     <View>
                         <Text style={ styles.username }>
                             { item.username }
@@ -20,11 +22,6 @@ class UserListItem extends Component {
                             { joinDate }
                         </Text>
                     </View>
-                    <TouchableOpacity onPress={ () => deleteUser() }
-                        style={ styles.delete }>
-                        <Image style={ styles.deleteIcon }
-                            source={ config.images.deleteIcon } />
-                    </TouchableOpacity>
                 </View>
             </TouchableOpacity>
         )
@@ -32,6 +29,12 @@ class UserListItem extends Component {
 }
 
 const styles = StyleSheet.create({
+    userContainer: {
+        padding: 20,
+        flexDirection: 'row', 
+        alignItems: 'center',
+        backgroundColor: '#fff'
+    },
     username: {
         fontSize: 20,
         color: "#333",

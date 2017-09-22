@@ -21,7 +21,7 @@ class Post extends Component {
     componentDidMount() {
         let { params } = this.props.navigation.state
         let { comment } = this.state
-        comment.userId = "59c1404530b12a2592c4bec7"
+        comment.userId = "58aa1b9c11bc62b85c514888"
 
         this.setState({
             comments: params.post._comments
