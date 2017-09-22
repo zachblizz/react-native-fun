@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, TextInput } 
 import moment from 'moment'
 import Nav from './Nav'
 import UserListItem from '../presentations/UserListItem'
-import CreatePostBtn from '../presentations/CreatePostBtn'
 
 class Users extends Component {
     static navigationOptions = {
@@ -100,7 +99,6 @@ class Users extends Component {
                     keyExtractor={ (friend, i) => i }
                     renderItem={({ item }) => this._renderFriend(item)}
                 />
-                <CreatePostBtn />
             </View>
         )
     }
@@ -114,7 +112,7 @@ const styles = StyleSheet.create({
     },
     friendLayout: {
         flexDirection: "column",
-        marginBottom: 10,
+        marginBottom: 5,
     },
     search: {
         marginBottom: 20

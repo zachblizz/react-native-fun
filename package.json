@@ -11,6 +11,8 @@
     "moment": "^2.18.1",
     "react": "16.0.0-alpha.12",
     "react-native": "0.48.3",
+    "react-native-tabs": "^1.0.9",
+    "react-native-vector-icons": "^4.4.0",
     "react-navigation": "^1.0.0-beta.11",
     "util": "^0.10.3"
   },

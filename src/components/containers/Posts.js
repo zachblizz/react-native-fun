@@ -36,7 +36,9 @@ class Posts extends Component {
         let created = dateformat(item.createdAt, "mmm dS, yyyy")
         return (
             <View style={ styles.post }>
-                <PostItem post={ item } showUsername={ true } created={ created }
+                <PostItem post={ item } 
+                    showUsername={ true } 
+                    created={ created }
                     nav={ navigate } />
             </View>
         )
