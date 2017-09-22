@@ -100,7 +100,6 @@ class Users extends Component {
                     keyExtractor={ (friend, i) => i }
                     renderItem={({ item }) => this._renderFriend(item)}
                 />
-                <CreatePostBtn />
             </View>
         )
     }
