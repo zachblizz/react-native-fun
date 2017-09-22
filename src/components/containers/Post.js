@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
         bottom: 10,
         right: 10,
         padding: 10,
-        backgroundColor: '#333',
+        backgroundColor: '#3A7CA5',
         height: 33,
         justifyContent: 'center',
         alignItems: 'center'

@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     modal: {
         height: 100+'%',
         width: 100+'%',
-        backgroundColor: 'rgba(0,0,0,0.9)',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     addBtn: {
         marginTop: 4,
         right: -10,
-        backgroundColor: '#333',
+        backgroundColor: '#3A7CA5',
         color: '#fff',
         padding: 5
     }

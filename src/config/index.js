@@ -14,6 +14,6 @@ export default {
     },
     constants: {
         HOST_IP: 'localhost',
-        USER_ID: '59c11db17083310827553b5c'
+        USER_ID: '59c3fd0ad6e79852c57f77ea'
     }
 }

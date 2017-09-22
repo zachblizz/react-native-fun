@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 13,
-        marginTop: 3,
-        marginBottom: 3,
+        marginTop: 2,
+        marginBottom: 4,
         color: '#542344'
     },
     postSubHeader: {
