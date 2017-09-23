@@ -68,11 +68,6 @@ class Post extends Component {
         .then(resp => resp.json())
         .then(resp => {
             if (resp.success) {
-                // comments.push(resp.data)
-                // this.setState({
-                //     addComment: !this.state.addComment,
-                //     comments: comments
-                // })
                 this._onRefresh(postId)
             }
         })
