@@ -10,11 +10,7 @@ class NewPost extends Component {
                 title: '',
                 text: '',
                 link: '',
-<<<<<<< HEAD
                 userId: config.constants.USER_ID
-=======
-                userId: '59c11db17083310827553b5c'
->>>>>>> 1d5547ca194cf1267fd1d30f04f1f4961d4281ae
             }
         }
     }
