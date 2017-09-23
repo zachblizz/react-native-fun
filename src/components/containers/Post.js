@@ -121,16 +121,20 @@ class Post extends Component {
                         </Text> 
                         : null 
                     }
-                    <TouchableOpacity
-                        onPress={ () => navigate('Profile', { user: params.post._creator }) }>
-                        <View style={{ flexDirection: 'row' }}>
-                            <Image style={ styles.userProfileIcon }
-                                source={ config.images.userProfileIcon } />
-                            <Text style={ styles.author }>
-                                { params.post._creator.username }
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
+                    <View style={{ flexDirection: 'row', width: 100+'%' }}>
+                        <TouchableOpacity style={{ flexDirection: 'row' }}
+                            onPress={ () => navigate('Profile', { user: params.post._creator }) }>
+                                <Image style={ styles.icon }
+                                    source={ config.images.userProfileIcon } />
+                                <Text style={ styles.author }>
+                                    { params.post._creator.username }
+                                </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ marginLeft: 70+'%' }}>
+                            <Image style={styles.icon }
+                                source={ config.images.editIcon } />
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <View style={ styles.comments }>
                     { params.post._comments.length > 0 
@@ -220,7 +224,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    userProfileIcon: { 
+    icon: { 
         height: 15, 
         width: 15, 
         marginTop: 9, 

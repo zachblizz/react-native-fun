@@ -57,7 +57,7 @@ class NewPost extends Component {
                     onChangeText={ (link) => this.updatePost(link, "link") } />
                 <TouchableOpacity style={ styles.create }
                     onPress={ () => this.post() }>
-                    <Text style={{ color: '#fff' }}>Create Post</Text>
+                    <Text style={{ color: '#fff' }}>Add Post</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     },
     create: {
         padding: 10,
-        width: 100,
+        alignItems: 'center',
         backgroundColor: '#3A7CA5'
     },
     input: {
