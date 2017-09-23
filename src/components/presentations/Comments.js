@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { View, ScrollView, RefreshControl, Text, Image, StyleSheet } from 'react-native'
+import { View, ScrollView, RefreshControl, Text, Image, StyleSheet, FlatList } from 'react-native'
+import CommentItem from '../presentations/CommentItem'
 
-class Comments extends component {
+
+class Comments extends Component {
     _renderComment(item) {
         return (
             <CommentItem comment={ item } />
@@ -13,7 +15,7 @@ class Comments extends component {
 
         return (
             <View style={ styles.comments }>
-                { params.post._comments.length > 0 
+                { comments.length > 0 
                     ? <ScrollView refreshControl={
                             <RefreshControl
                                 refreshing={ refreshing }
@@ -47,4 +49,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default Components
+export default Comments

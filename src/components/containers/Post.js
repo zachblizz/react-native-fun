@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, ScrollView, RefreshControl } from 'react-native'
-import CommentItem from '../presentations/CommentItem'
 import CommentModal from '../presentations/CommentModal'
 import PostPres from '../presentations/PostPres'
 import Comments from '../presentations/Comments'

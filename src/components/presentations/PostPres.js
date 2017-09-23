@@ -8,22 +8,22 @@ class PostPres extends Component {
 
         return (
             <View style={ styles.post }>
-                <Text style={ styles.content }>{ params.post.text }</Text>
+                <Text style={ styles.content }>{ post.text }</Text>
                 { 
-                    params.post.link !== "" 
+                    post.link !== "" 
                     ? 
                     <Text style={ styles.link }>
-                        { params.post.link }
+                        { post.link }
                     </Text> 
                     : null
                 }
                 <View style={{ flexDirection: 'row', width: 100+'%' }}>
                     <TouchableOpacity style={{ flexDirection: 'row' }}
-                        onPress={ () => navigate('Profile', { user: params.post._creator }) }>
+                        onPress={ () => navigate('Profile', { user: post._creator }) }>
                             <Image style={ styles.icon }
                                 source={ config.images.userProfileIcon } />
                             <Text style={ styles.author }>
-                                { params.post._creator.username }
+                                { post._creator.username }
                             </Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={{ marginLeft: 70+'%' }}
