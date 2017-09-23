@@ -7,9 +7,9 @@ class PostItem extends Component {
         let { post, showUsername, created, nav } = this.props
 
         return (
-            <TouchableOpacity
+            <TouchableOpacity style={ styles.postItem }
                 onPress={ () => nav('Post', { post: post, nav: nav }) }>
-                <View style={ styles.postItem }>
+                <View>
                     <Text style={ styles.postHeader }>{ post.title }</Text>
                     <Text style={ styles.text }>{ post.text.length < 140 ? post.text : post.text.substring(0, 140) + "..." }</Text>
                     <View style={ styles.commentContainer }>
@@ -30,8 +30,9 @@ const styles = StyleSheet.create({
     postItem: {
         padding: 20,
         backgroundColor: '#fff',
-        marginBottom: 3,
-        borderWidth: StyleSheet.hairlineWidth,
+        marginBottom: 4,
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderBottomWidth: StyleSheet.hairlineWidth,
         borderColor: '#d6d7da',
     },
     postHeader: {

@@ -71,13 +71,11 @@ class Profile extends Component {
         let { navigate } = this.props.navigation
 
         return (
-            <ScrollView style={{ height: 100+'%' }}
-                refreshControl = {
-                    <RefreshControl refreshing={ refreshing }
-                        onRefresh={ () => this._onRefresh.bind(this) } />
-                }>
-                <UserProfile user={ user } posts={ posts } nav={ navigate } />
-            </ScrollView>
+            <UserProfile user={ user } 
+                posts={ posts } 
+                nav={ navigate }
+                refresh={ () => this._onRefresh.bind(this) }
+                refreshing={ refreshing } />
         )
     }
 }

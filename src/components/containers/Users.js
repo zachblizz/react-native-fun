@@ -108,7 +108,7 @@ class Users extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        paddingTop: 20,
         width: 100+'%'
     },
     friendLayout: {
@@ -116,6 +116,8 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     search: {
+        backgroundColor: '#fff',
+        padding: 10,
         marginBottom: 20
     }
 })

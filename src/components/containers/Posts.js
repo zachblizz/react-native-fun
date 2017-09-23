@@ -37,12 +37,10 @@ class Posts extends Component {
         let { navigate } = this.props.navigation
         let created = dateformat(item.createdAt, "mmm dS, yyyy")
         return (
-            <View style={ styles.post }>
-                <PostItem post={ item } 
-                    showUsername={ true } 
-                    created={ created }
-                    nav={ navigate } />
-            </View>
+            <PostItem post={ item } 
+                showUsername={ true } 
+                created={ created }
+                nav={ navigate } />
         )
     }
 
@@ -91,7 +89,7 @@ class Posts extends Component {
 
 const styles = StyleSheet.create({
     postsContainer: {
-        padding: 20,
+        paddingTop: 20,
         height: 100+'%'
     }
 })

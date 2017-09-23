@@ -66,7 +66,7 @@ class NewPost extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
+        padding: 10,
         height: 100+'%',
     },
     create: {
