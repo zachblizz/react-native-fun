@@ -68,11 +68,12 @@ class Post extends Component {
         .then(resp => resp.json())
         .then(resp => {
             if (resp.success) {
-                comments.push(resp.data)
-                this.setState({
-                    addComment: !this.state.addComment,
-                    comments: comments
-                })
+                // comments.push(resp.data)
+                // this.setState({
+                //     addComment: !this.state.addComment,
+                //     comments: comments
+                // })
+                this._onRefresh(postId)
             }
         })
     }
@@ -98,7 +99,7 @@ class Post extends Component {
             if (resp.comments) {
                 comments = resp.comments
                 this.setState({
-                    comments,
+                    comments: comments,
                     refreshing: false
                 })
             }
@@ -145,19 +146,13 @@ class Post extends Component {
                                 />
                             }>
                             <FlatList 
-                                data={ params.post._comments } 
+                                data={ this.state.comments } 
                                 keyExtractor={ comment => comment._id }
                                 renderItem={ ({item}) => this._renderComment(item) } /> 
                         </ScrollView>
-                        : <ScrollView style={ styles.noComments }
-                            refreshControl={
-                                <RefreshControl
-                                    refreshing={ this.state.refreshing }
-                                    onRefresh={ () => this._onRefresh(params.post._id) }
-                                />
-                            }>
+                        : <View style={ styles.noComments }>
                             <Text>No Comments Yet...</Text>
-                        </ScrollView>
+                        </View>
                     }
                 </View>
                 <TouchableOpacity style={ styles.addCmt }

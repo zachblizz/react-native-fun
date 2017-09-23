@@ -28,7 +28,7 @@ class CommentModal extends Component {
                                 onChangeText={(text) => commentText(text)}
                             />
                             <TouchableOpacity
-                                onPress={ () => { comment() } }>
+                                onPress={ () => { comment(); setVisibility() } }>
                                 <Text style={ styles.addBtn }>post</Text>
                             </TouchableOpacity>
                         </View>
