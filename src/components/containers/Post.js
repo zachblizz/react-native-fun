@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, ScrollView, RefreshControl } from 'react-native'
 import CommentItem from '../presentations/CommentItem'
 import CommentModal from '../presentations/CommentModal'
+import PostPres from '../presentations/PostPres'
+import Comments from '../presentations/Comments'
 import config from '../../config'
 
 class Post extends Component {
@@ -27,12 +29,6 @@ class Post extends Component {
         this.setState({
             comments: params.post._comments
         })
-    }
-
-    _renderComment(item) {
-        return (
-            <CommentItem comment={ item } />
-        )
     }
 
     commentContent(text) {
@@ -101,55 +97,21 @@ class Post extends Component {
         })
     }
 
+    updatePost() {
+
+    }
+
     render() {
         let { params } = this.props.navigation.state
         let { navigate } = this.props.navigation
 
         return (
             <View style={ styles.container }>
-                <View style={ styles.post }>
-                    <Text style={ styles.content }>{ params.post.text }</Text>
-                    { 
-                        params.post.link !== "" 
-                        ? 
-                        <Text style={ styles.link }>
-                            { params.post.link }
-                        </Text> 
-                        : null 
-                    }
-                    <View style={{ flexDirection: 'row', width: 100+'%' }}>
-                        <TouchableOpacity style={{ flexDirection: 'row' }}
-                            onPress={ () => navigate('Profile', { user: params.post._creator }) }>
-                                <Image style={ styles.icon }
-                                    source={ config.images.userProfileIcon } />
-                                <Text style={ styles.author }>
-                                    { params.post._creator.username }
-                                </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={{ marginLeft: 70+'%' }}>
-                            <Image style={styles.icon }
-                                source={ config.images.editIcon } />
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={ styles.comments }>
-                    { params.post._comments.length > 0 
-                        ? <ScrollView refreshControl={
-                                <RefreshControl
-                                    refreshing={ this.state.refreshing }
-                                    onRefresh={ () => this._onRefresh(params.post._id) }
-                                />
-                            }>
-                            <FlatList 
-                                data={ this.state.comments } 
-                                keyExtractor={ comment => comment._id }
-                                renderItem={ ({item}) => this._renderComment(item) } /> 
-                        </ScrollView>
-                        : <View style={ styles.noComments }>
-                            <Text>No Comments Yet...</Text>
-                        </View>
-                    }
-                </View>
+                <PostPres post={ params.post } 
+                    update={ () => this.updatePost.bind(this) }/>
+                <Comments comments={ this.state.comments }
+                    refresh={ () => this._onRefresh(params.post._id) }
+                    refreshing={ this.state.refreshing } />
                 <TouchableOpacity style={ styles.addCmt }
                     onPress={ () => this.commentModal() }>
                     <Text style={{ color: '#fff' }}>Add Comment</Text>

@@ -89,8 +89,8 @@ class Posts extends Component {
 
 const styles = StyleSheet.create({
     postsContainer: {
-        paddingTop: 20,
-        height: 100+'%'
+        paddingTop: 10,
+        height: 10,
     }
 })
 
