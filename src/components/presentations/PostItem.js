@@ -29,11 +29,13 @@ class PostItem extends Component {
 const styles = StyleSheet.create({
     postItem: {
         padding: 20,
+        height: 150,
         backgroundColor: '#fff',
         marginBottom: 4,
         borderTopWidth: StyleSheet.hairlineWidth,
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderColor: '#d6d7da',
+        justifyContent: 'center'
     },
     postHeader: {
         fontSize: 20,
@@ -45,6 +47,11 @@ const styles = StyleSheet.create({
         marginTop: 2,
         marginBottom: 4,
         color: '#542344'
+    },
+    text: {
+        marginTop: 3,
+        marginBottom: 3,
+        fontSize: 12
     },
     postSubHeader: {
         fontSize: 10,

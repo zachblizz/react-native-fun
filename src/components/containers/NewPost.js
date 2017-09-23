@@ -10,7 +10,11 @@ class NewPost extends Component {
                 title: '',
                 text: '',
                 link: '',
+<<<<<<< HEAD
                 userId: config.constants.USER_ID
+=======
+                userId: '59c11db17083310827553b5c'
+>>>>>>> 1d5547ca194cf1267fd1d30f04f1f4961d4281ae
             }
         }
     }
@@ -50,7 +54,7 @@ class NewPost extends Component {
             <View style={ styles.container }>
                 <TextInput placeholder="title" style={ styles.input }
                     onChangeText={ (title) => this.updatePost(title, "title") } />
-                <TextInput placeholder="type your post here" multiline={ true }
+                <TextInput placeholder="type your post here (max 140 chars)" multiline={ true }
                     style={[ styles.input, styles.large ]} maxLength={ 140 }
                     onChangeText={ (text) => this.updatePost(text, "text") } />
                 <TextInput placeholder="link" style={ styles.input }
