@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView, RefreshControl } from 'react-native'
 import UserProfile from '../presentations/UserProfile'
+import config from '../../config'
 
 class Profile extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -11,7 +12,8 @@ class Profile extends Component {
         super(props)
         this.state = {
             posts: [],
-            user: {}
+            user: {},
+            refreshing: false
         }
     }
 
@@ -19,7 +21,7 @@ class Profile extends Component {
         let { params } = this.props.navigation.state
         
         let user = params.user
-        fetch("http://localhost:3040/api/postsByUser", {
+        fetch("http://" + config.constants.HOST_IP + ":3040/api/postsByUser", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -41,14 +43,39 @@ class Profile extends Component {
         })
     }
 
+    _onRefresh() {
+        let posts = Object.assign([], this.state.posts)
+        this.setState({ refreshing: true })
+        fetch("http://" + config.constants.HOST_IP + ":3040/api/postsByUser", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "username": params.user.username
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            posts = data.posts
+            this.setState({
+                posts,
+                refreshing: false
+            })
+        })
+    }
+
     render() {
-        let { user, posts } = this.state
+        let { user, posts, refreshing } = this.state
         let { navigate } = this.props.navigation
 
         return (
-            <View style={{ height: 100+'%' }}>
-                <UserProfile user={ user } posts={ posts } nav={ navigate } />
-            </View>
+            <UserProfile user={ user } 
+                posts={ posts } 
+                nav={ navigate }
+                refresh={ () => this._onRefresh.bind(this) }
+                refreshing={ refreshing } />
         )
     }
 }

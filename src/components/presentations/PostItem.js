@@ -7,10 +7,11 @@ class PostItem extends Component {
         let { post, showUsername, created, nav } = this.props
 
         return (
-            <TouchableOpacity
+            <TouchableOpacity style={ styles.postItem }
                 onPress={ () => nav('Post', { post: post, nav: nav }) }>
-                <View style={ styles.postItem }>
+                <View>
                     <Text style={ styles.postHeader }>{ post.title }</Text>
+                    <Text style={ styles.text }>{ post.text.length < 140 ? post.text : post.text.substring(0, 140) + "..." }</Text>
                     <View style={ styles.commentContainer }>
                         <Image style={ styles.commentIcon }
                             source={ config.images.commentIcon } />
@@ -18,7 +19,7 @@ class PostItem extends Component {
                             { post._comments.length }  |  { created }
                         </Text>
                     </View>
-                    { showUsername ? <Text style={[ styles.postSubHeader, { color: "#666" } ]}>{ post._creator.username }</Text> : null }
+                    { showUsername ? <Text style={[ styles.postSubHeader, { color: "#987b8e" } ]}>{ post._creator.username }</Text> : null }
                 </View>
             </TouchableOpacity>
         )
@@ -29,19 +30,26 @@ const styles = StyleSheet.create({
     postItem: {
         padding: 20,
         backgroundColor: '#fff',
-        marginBottom: 3,
-        borderWidth: StyleSheet.hairlineWidth,
+        marginBottom: 4,
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderBottomWidth: StyleSheet.hairlineWidth,
         borderColor: '#d6d7da',
     },
     postHeader: {
         fontSize: 20,
         marginBottom: 3,
-        color: '#EA9010'
+        color: '#542344'
+    },
+    text: {
+        fontSize: 13,
+        marginTop: 2,
+        marginBottom: 4,
+        color: '#542344'
     },
     postSubHeader: {
         fontSize: 10,
-        color: '#888',
-        marginBottom: 2
+        marginBottom: 2,
+        color: '#764e69',
     },
     commentContainer: {
         flexDirection: 'row', 

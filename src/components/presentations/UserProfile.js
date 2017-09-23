@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Image, ScrollView, RefreshControl } from 'react-native'
 import dateformat from 'dateformat'
 import PostItem from './PostItem'
 import config from '../../config'
@@ -20,7 +20,7 @@ class UserProfile extends Component {
     }
 
     render() {
-        let { user, posts } = this.props
+        let { user, posts, refreshing, refresh } = this.props
         
         return (
             <View>
@@ -32,12 +32,16 @@ class UserProfile extends Component {
                 </View>
                 <View style={ styles.postContainer }>
                     { posts.length > 0 
-                        ? <View style={ styles.posts }>
+                        ? <ScrollView style={{ height: 80+'%' }}
+                                refreshControl = {
+                                    <RefreshControl refreshing={ refreshing }
+                                        onRefresh={ () => refresh() } />
+                                }>
                             <FlatList 
                                 data={ posts }
                                 keyExtractor={ post => post._id }
                                 renderItem={({item}) => this._renderPosts(item)} />
-                        </View>
+                        </ScrollView>
                         : <View style={ styles.noPosts }>
                             <Text>{ user.username } has no posts...</Text>
                         </View>
@@ -60,11 +64,13 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     postContainer: {
-        padding: 10
+        paddingTop: 10,
+        width: 100+'%',
+        height: 75+'%',
     },
     posts: {
         width: 100+'%',
-        height: 70+'%',
+        height: 100+'%',
         padding: 5,
     },
     noPosts: {

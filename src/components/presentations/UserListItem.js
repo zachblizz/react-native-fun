@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     username: {
         fontSize: 20,
         color: "#333",
+        marginBottom: 4
     },
     joined: {
         fontSize: 10,

@@ -10,7 +10,7 @@ class NewPost extends Component {
                 title: '',
                 text: '',
                 link: '',
-                userId: '58aa129fbb4f4cb587e72f8d'
+                userId: config.constants.USER_ID
             }
         }
     }
@@ -26,7 +26,7 @@ class NewPost extends Component {
     post() {
         let { post } = this.state
         if (post.title !== '' && (post.text !== '' || post.link !== '')) {
-            fetch("http://localhost:3040/api/post", {
+            fetch("http://" + config.constants.HOST_IP + ":3040/api/post", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -55,9 +55,9 @@ class NewPost extends Component {
                     onChangeText={ (text) => this.updatePost(text, "text") } />
                 <TextInput placeholder="link" style={ styles.input }
                     onChangeText={ (link) => this.updatePost(link, "link") } />
-                <TouchableOpacity
+                <TouchableOpacity style={ styles.create }
                     onPress={ () => this.post() }>
-                    <Text>Create Post</Text>
+                    <Text style={{ color: '#fff' }}>Add Post</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -66,8 +66,13 @@ class NewPost extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
+        padding: 10,
         height: 100+'%',
+    },
+    create: {
+        padding: 10,
+        alignItems: 'center',
+        backgroundColor: '#3A7CA5'
     },
     input: {
         backgroundColor: '#fff',

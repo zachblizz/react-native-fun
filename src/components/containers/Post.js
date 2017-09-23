@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, ScrollView, RefreshControl } from 'react-native'
 import CommentItem from '../presentations/CommentItem'
 import CommentModal from '../presentations/CommentModal'
 import config from '../../config'
@@ -14,14 +14,15 @@ class Post extends Component {
         this.state = {
             addComment: false,
             comment: {},
-            comments: []
+            comments: [],
+            refreshing: false
         }
     }
 
     componentDidMount() {
         let { params } = this.props.navigation.state
         let { comment } = this.state
-        comment.userId = "58aa129fbb4f4cb587e72f8d"
+        comment.userId = config.constants.USER_ID
 
         this.setState({
             comments: params.post._comments
@@ -52,7 +53,7 @@ class Post extends Component {
         let { comment } = this.state
         let comments = Object.assign([], this.state.comments)
 
-        fetch("http://localhost:3040/api/comment", {
+        fetch("http://" + config.constants.HOST_IP + ":3040/api/comment", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -67,10 +68,34 @@ class Post extends Component {
         .then(resp => resp.json())
         .then(resp => {
             if (resp.success) {
-                comments.push(resp.data)
+                this._onRefresh(postId)
+            }
+        })
+    }
+
+    _onRefresh(postId) {
+        this.setState({
+            refreshing: true
+        })
+        let comments = Object.assign([], this.state.comments)
+
+        fetch("http://" + config.constants.HOST_IP + ":3040/api/postById", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id: postId
+            })
+        })
+        .then(resp => resp.json())
+        .then(resp => {
+            if (resp.comments) {
+                comments = resp.comments
                 this.setState({
-                    addComment: !this.state.addComment,
-                    comments: comments
+                    comments: comments,
+                    refreshing: false
                 })
             }
         })
@@ -84,23 +109,42 @@ class Post extends Component {
             <View style={ styles.container }>
                 <View style={ styles.post }>
                     <Text style={ styles.content }>{ params.post.text }</Text>
-                    <TouchableOpacity
-                        onPress={ () => navigate('Profile', { user: params.post._creator }) }>
-                        <View style={{ flexDirection: 'row' }}>
-                            <Image style={ styles.userProfileIcon }
-                                source={ config.images.userProfileIcon } />
-                            <Text style={ styles.author }>
-                                { params.post._creator.username }
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
+                    { 
+                        params.post.link !== "" 
+                        ? 
+                        <Text style={ styles.link }>
+                            { params.post.link }
+                        </Text> 
+                        : null 
+                    }
+                    <View style={{ flexDirection: 'row', width: 100+'%' }}>
+                        <TouchableOpacity style={{ flexDirection: 'row' }}
+                            onPress={ () => navigate('Profile', { user: params.post._creator }) }>
+                                <Image style={ styles.icon }
+                                    source={ config.images.userProfileIcon } />
+                                <Text style={ styles.author }>
+                                    { params.post._creator.username }
+                                </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ marginLeft: 70+'%' }}>
+                            <Image style={styles.icon }
+                                source={ config.images.editIcon } />
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <View style={ styles.comments }>
                     { params.post._comments.length > 0 
-                        ? <FlatList 
-                            data={ params.post._comments } 
-                            keyExtractor={ comment => comment._id }
-                            renderItem={ ({item}) => this._renderComment(item) } /> 
+                        ? <ScrollView refreshControl={
+                                <RefreshControl
+                                    refreshing={ this.state.refreshing }
+                                    onRefresh={ () => this._onRefresh(params.post._id) }
+                                />
+                            }>
+                            <FlatList 
+                                data={ this.state.comments } 
+                                keyExtractor={ comment => comment._id }
+                                renderItem={ ({item}) => this._renderComment(item) } /> 
+                        </ScrollView>
                         : <View style={ styles.noComments }>
                             <Text>No Comments Yet...</Text>
                         </View>
@@ -139,6 +183,12 @@ const styles = StyleSheet.create({
     content: {
         fontSize: 15
     },
+    link: {
+        marginTop: 10,
+        marginBottom: 10,
+        color: 'blue',
+        fontSize: 10
+    },
     author: {
         marginTop: 10,
         fontSize: 12,
@@ -147,7 +197,7 @@ const styles = StyleSheet.create({
     comments: {
         top: 0,
         width: 100+'%',
-        height: 75+'%',
+        height: 70+'%',
         marginLeft: 15
     },
     noComments: {
@@ -159,12 +209,12 @@ const styles = StyleSheet.create({
         bottom: 10,
         right: 10,
         padding: 10,
-        backgroundColor: '#333',
+        backgroundColor: '#3A7CA5',
         height: 33,
         justifyContent: 'center',
         alignItems: 'center'
     },
-    userProfileIcon: { 
+    icon: { 
         height: 15, 
         width: 15, 
         marginTop: 9, 
