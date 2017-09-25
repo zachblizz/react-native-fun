@@ -47,7 +47,7 @@ class Signup extends Component {
             })
             .then(resp => resp.json())
             .then(resp => {
-                if (resp.success) {
+                if (resp) {
                     let _users = Object.assign([], this.state.users)
                     _users.push(user)
                     this.setState({
@@ -66,8 +66,6 @@ class Signup extends Component {
                     } catch (err) {
                         alert(err)
                     }
-                } else {
-                    AlertIOS.alert("OOPS!", data.message.errors.username.message)
                 }
             }).done()
         }

@@ -15,7 +15,6 @@ export default {
     },
     constants: {
         HOST_IP: '52.40.200.123',
-        USER_ID: '59c6f52b0737ac05f22df4ad',
         UPDATE_USER_ID: 'UPDATE_USER_ID',
         UPDATE_USER_NAME: 'UPDATE_USER_NAME'
     }
