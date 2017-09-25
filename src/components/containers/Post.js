@@ -4,6 +4,7 @@ import CommentModal from '../presentations/CommentModal'
 import PostPres from '../presentations/PostPres'
 import Comments from '../presentations/Comments'
 import config from '../../config'
+import Store from '../../store/Store'
 
 class Post extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -21,9 +22,11 @@ class Post extends Component {
     }
 
     componentDidMount() {
+        Store.subscribe(() => {})
+
         let { params } = this.props.navigation.state
         let { comment } = this.state
-        comment.userId = config.constants.USER_ID
+        comment.userId = Store.getState().userId
 
         this.setState({
             comments: params.post._comments
@@ -106,7 +109,7 @@ class Post extends Component {
 
         return (
             <View style={ styles.container }>
-                <PostPres post={ params.post } 
+                <PostPres post={ params.post } nav={ navigate }
                     update={ () => this.updatePost.bind(this) }/>
                 <Comments comments={ this.state.comments }
                     refresh={ () => this._onRefresh(params.post._id) }

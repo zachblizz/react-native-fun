@@ -9,7 +9,7 @@ class CommentModal extends Component {
             <Modal
                 animationType="fade"
                 visible={ visible }
-                transparent={ true }>
+                transparent={ true } >
                 <View style={ styles.modal }>
                     <View style={ styles.container }>
                         <View style={ styles.close }>

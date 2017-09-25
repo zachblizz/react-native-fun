@@ -14,7 +14,9 @@ export default {
         editIcon: require('../../assets/images/edit.png'),
     },
     constants: {
-        HOST_IP: '192.168.1.109',
-        USER_ID: '59c507db66606c1b5adf0d81'
+        HOST_IP: '52.40.200.123',
+        USER_ID: '59c6f52b0737ac05f22df4ad',
+        UPDATE_USER_ID: 'UPDATE_USER_ID',
+        UPDATE_USER_NAME: 'UPDATE_USER_NAME'
     }
 }

@@ -19,7 +19,6 @@ class Profile extends Component {
 
     componentDidMount() {
         let { params } = this.props.navigation.state
-        
         let user = params.user
         fetch("http://" + config.constants.HOST_IP + ":3040/api/postsByUser", {
             method: "POST",

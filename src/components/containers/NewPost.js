@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, TouchableOpacity, Text, Image, StyleSheet, TextInput, AlertIOS } from 'react-native'
 import config from '../../config'
+import Store from '../../store/Store'
 
 class NewPost extends Component {
     constructor(props) {
@@ -10,9 +11,20 @@ class NewPost extends Component {
                 title: '',
                 text: '',
                 link: '',
-                userId: config.constants.USER_ID
+                userId: ''
             }
         }
+    }
+
+    componentDidMount() {
+        Store.subscribe(() => {
+            let post = Object.assign({}, this.state.post)
+            post.userId = Store.getState().userId
+            console.log(post)
+            this.setState({
+                post
+            })
+        })
     }
 
     updatePost(content, key) {

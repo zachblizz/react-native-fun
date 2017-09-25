@@ -4,7 +4,7 @@ import config from '../../config'
 
 class PostPres extends Component {
     render() {
-        let { post, update } = this.props
+        let { post, update, nav } = this.props
 
         return (
             <View style={ styles.post }>
@@ -19,7 +19,7 @@ class PostPres extends Component {
                 }
                 <View style={{ flexDirection: 'row', width: 100+'%' }}>
                     <TouchableOpacity style={{ flexDirection: 'row' }}
-                        onPress={ () => navigate('Profile', { user: post._creator }) }>
+                        onPress={ () => nav('Profile', { user: post._creator }) }>
                             <Image style={ styles.icon }
                                 source={ config.images.userProfileIcon } />
                             <Text style={ styles.author }>

@@ -5,10 +5,6 @@ import PostItem from './PostItem'
 import config from '../../config'
 
 class UserProfile extends Component {
-    viewPost(id) {
-        alert(id)
-    }
-
     _renderPosts(item) {
         let created = dateformat(new Date(item.createdAt), "mmm dS, yyyy")
         let { nav } = this.props
