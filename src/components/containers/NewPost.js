@@ -48,7 +48,9 @@ class NewPost extends Component {
             .then(resp => resp.json())
             .then(resp => {
                 if (resp.success) {
-                    AlertIOS.alert("Nice", "Message Posted!")
+                    this.updatePost("", "title")
+                    this.updatePost("", "text")
+                    this.updatePost("", "link")
                 }
             })
         } else {
