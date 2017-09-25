@@ -20,9 +20,8 @@ class NewPost extends Component {
         Store.subscribe(() => {
             let post = Object.assign({}, this.state.post)
             post.userId = Store.getState().userId
-            console.log(post)
             this.setState({
-                post
+                post: post
             })
         })
     }
