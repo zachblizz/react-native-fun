@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, ScrollView, RefreshControl } from 'react-native'
 import CommentModal from '../presentations/CommentModal'
+import UpdatePostModal from '../presentations/UpdatePostModal'
 import PostPres from '../presentations/PostPres'
 import Comments from '../presentations/Comments'
 import config from '../../config'
@@ -15,9 +16,11 @@ class Post extends Component {
         super(props)
         this.state = {
             addComment: false,
+            updatePost: false,
             comment: {},
             comments: [],
-            refreshing: false
+            refreshing: false,
+            post: {}
         }
     }
 
@@ -25,11 +28,13 @@ class Post extends Component {
         Store.subscribe(() => {})
 
         let { params } = this.props.navigation.state
+        // alert(JSON.stringify(params.post))
         let { comment } = this.state
         comment.userId = Store.getState().userId
 
         this.setState({
-            comments: params.post._comments
+            comments: params.post._comments,
+            post: params.post
         })
     }
 
@@ -41,10 +46,16 @@ class Post extends Component {
         })
     }
 
-    commentModal(change) {
-        this.setState({
-            addComment: change ? change : !this.state.addComment
-        })
+    showModal(change, which) {
+        if (which == "comment") {
+            this.setState({
+                addComment: change ? change : !this.state.addComment
+            })
+        } else {
+            this.setState({
+                updatePost: change ? change : !this.state.updatePost
+            })
+        }
     }
 
     createComment(postId) {
@@ -99,8 +110,12 @@ class Post extends Component {
         })
     }
 
-    updatePost() {
-
+    updatePost(text) {
+        let post = Object.assign({}, this.state.post)
+        post.text = text
+        this.setState({
+            post
+        })
     }
 
     render() {
@@ -110,19 +125,26 @@ class Post extends Component {
         return (
             <View style={ styles.container }>
                 <PostPres post={ params.post } nav={ navigate }
-                    update={ () => this.updatePost.bind(this) }/>
+                    update={ () => this.showModal(null, "post") }/>
                 <Comments comments={ this.state.comments }
                     refresh={ () => this._onRefresh(params.post._id) }
                     refreshing={ this.state.refreshing } />
                 <TouchableOpacity style={ styles.addCmt }
-                    onPress={ () => this.commentModal() }>
+                    onPress={ () => this.showModal(null, "comment") }>
                     <Text style={{ color: '#fff' }}>Add Comment</Text>
                 </TouchableOpacity>
-                { this.state.addComment 
+                { this.state.updatePost
+                    ? <UpdatePostModal post={ params.post }
+                        setVisibility={ () => this.showModal(false, "post") }
+                        visible={ this.state.updatePost }
+                        updatePostText={ (text) => this.updatePost(text) } />
+                    : null
+                }
+                { this.state.addComment
                     ? <CommentModal 
                         post={ params.post } 
                         visible={ this.state.addComment }
-                        setVisibility={ () => this.commentModal(false) }
+                        setVisibility={ () => this.showModal(false, "comment") }
                         commentText={ (text) => this.commentContent(text) }
                         comment={ () => this.createComment(params.post._id) } /> 
                     : null }

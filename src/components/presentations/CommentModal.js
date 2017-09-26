@@ -12,13 +12,20 @@ class CommentModal extends Component {
                 transparent={ true } >
                 <View style={ styles.modal }>
                     <View style={ styles.container }>
+                        <View style={{ alignItems: 'center', marginBottom: 15 }}>
+                            <Text style={{ fontSize: 20 }}>
+                                Add Comment
+                            </Text>
+                        </View>
                         <View style={ styles.close }>
                             <TouchableOpacity
                                 onPress={ () => setVisibility() } >
                                 <Text style={{ fontSize: 20 }}>&times;</Text>
                             </TouchableOpacity>
                         </View>
-                        <Text>{ post.text }</Text>
+                        <Text style={{ fontSize: 15 }}>
+                            { post.text }
+                        </Text>
                         <View style={ styles.commentInfo }>
                             <TextInput
                                 style={ styles.textInput }
@@ -54,18 +61,17 @@ const styles = StyleSheet.create({
     },
     container: {
         padding: 20,
-        height: 30+'%',
-        width: 95+'%',
-        backgroundColor: '#ddd'
+        height: 300,
+        width: 100+'%',
+        backgroundColor: '#fff'
     },
     commentInfo: {
         position: 'absolute',
-        padding: 5,
-        bottom: 0,
+        padding: 10,
+        bottom: 5,
         left: 20,
         alignItems: 'center',
         flexDirection: 'row',
-        width: 100+'%',
         justifyContent: 'center',
         borderTopWidth: StyleSheet.hairlineWidth,
         borderColor: '#aaa',
