@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, ScrollView, RefreshControl } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, 
+    Image, ScrollView, RefreshControl } from 'react-native'
 import CommentModal from '../presentations/CommentModal'
 import PostPres from '../presentations/PostPres'
 import Comments from '../presentations/Comments'
@@ -116,7 +117,7 @@ class Post extends Component {
                     refreshing={ this.state.refreshing } />
                 <TouchableOpacity style={ styles.addCmt }
                     onPress={ () => this.commentModal() }>
-                    <Text style={{ color: '#fff' }}>Add Comment</Text>
+                    <Text style={{ color: "#fff" }}>Add Comment</Text>
                 </TouchableOpacity>
                 { this.state.addComment 
                     ? <CommentModal 
@@ -134,15 +135,16 @@ class Post extends Component {
 const styles = StyleSheet.create({
     container: {
         width: 100+'%',
-        height: 100+'%'
+        height: 100+'%',
+        backgroundColor: config.constants.MAIN_COLOR
     },
     post: {
         top: 0,
         width: 100+'%',
-        backgroundColor: '#fafafa',
+        backgroundColor: config.constants.MAIN_COLOR,
         padding: 15,
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderColor: '#d6d7da',
+        borderColor: '#313e4a',
     },
     content: {
         fontSize: 15
@@ -170,8 +172,8 @@ const styles = StyleSheet.create({
     },
     addCmt: {
         position: 'absolute',
-        bottom: 10,
-        right: 10,
+        bottom: 40,
+        right: 20,
         padding: 10,
         backgroundColor: '#3A7CA5',
         height: 33,

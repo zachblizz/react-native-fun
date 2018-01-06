@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import dateformat from 'dateformat'
+import config from '../../config'
 
 class CommentItem extends Component {
     render() {
@@ -9,7 +10,7 @@ class CommentItem extends Component {
 
         return (
             <View style={ styles.comment }>
-                <Text>{ comment.text }</Text>
+                <Text style={ styles.text }>{ comment.text }</Text>
                 <View style={{ flexDirection: 'row', marginTop: 5 }}>
                     <Text style={ styles.smaller }>
                         { comment._creator.username }  |  { cmtDate }
@@ -25,11 +26,14 @@ const styles = StyleSheet.create({
         padding: 10,
         width: 85+'%',
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderColor: '#d6d7da',
+        borderColor: '#313e4a'
+    },
+    text: {
+        color: "#fff"
     },
     smaller: {
         fontSize: 10,
-        color: '#555'
+        color: '#aaa'
     }
 })
 

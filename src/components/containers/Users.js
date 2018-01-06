@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     search: {
-        backgroundColor: '#fff',
+        backgroundColor: "#fff",
         padding: 10,
         marginBottom: 20
     }

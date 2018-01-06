@@ -16,6 +16,9 @@ export default {
     constants: {
         HOST_IP: '52.40.200.123',
         UPDATE_USER_ID: 'UPDATE_USER_ID',
-        UPDATE_USER_NAME: 'UPDATE_USER_NAME'
+        UPDATE_USER_NAME: 'UPDATE_USER_NAME',
+        MAIN_COLOR: "#101820",
+        ACCNT_COLOR: "#1b2936",
+        MAIN_FONT: "#49d3b4"
     }
 }

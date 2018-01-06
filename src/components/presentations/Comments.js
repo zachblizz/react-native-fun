@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, ScrollView, RefreshControl, Text, Image, StyleSheet, FlatList } from 'react-native'
 import CommentItem from '../presentations/CommentItem'
+import config from '../../config'
 
 
 class Comments extends Component {
@@ -41,7 +42,8 @@ const styles = StyleSheet.create({
         top: 0,
         width: 100+'%',
         height: 70+'%',
-        marginLeft: 15
+        marginLeft: 15,
+        color: "#fff"
     },
     noComments: {
         alignItems: 'center',

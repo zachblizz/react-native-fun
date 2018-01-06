@@ -19,7 +19,7 @@ class PostItem extends Component {
                             { post._comments.length }  |  { created }
                         </Text>
                     </View>
-                    { showUsername ? <Text style={[ styles.postSubHeader, { color: "#987b8e" } ]}>{ post._creator.username }</Text> : null }
+                    { showUsername ? <Text style={[ styles.postSubHeader, { color: "#888" } ]}>{ post._creator.username }</Text> : null }
                 </View>
             </TouchableOpacity>
         )
@@ -29,29 +29,27 @@ class PostItem extends Component {
 const styles = StyleSheet.create({
     postItem: {
         padding: 20,
-        height: 150,
-        backgroundColor: '#fff',
+        backgroundColor: config.constants.MAIN_COLOR,
         marginBottom: 4,
-        borderTopWidth: StyleSheet.hairlineWidth,
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderColor: '#d6d7da',
+        borderColor: '#313e4a',
         justifyContent: 'center'
     },
     postHeader: {
-        fontSize: 20,
+        fontSize: 25,
         marginBottom: 3,
-        color: '#542344'
+        color: "#fff"
     },
     text: {
         marginTop: 3,
         marginBottom: 3,
-        fontSize: 12,
-        color: '#542344'
+        fontSize: 15,
+        color: '#ccc'
     },
     postSubHeader: {
         fontSize: 10,
         marginBottom: 2,
-        color: '#764e69',
+        color: '#aaa',
     },
     commentContainer: {
         flexDirection: 'row', 

@@ -20,6 +20,7 @@ class NewPost extends Component {
         Store.subscribe(() => {
             let post = Object.assign({}, this.state.post)
             post.userId = Store.getState().userId
+            console.log(post)
             this.setState({
                 post: post
             })
@@ -70,7 +71,7 @@ class NewPost extends Component {
                     onChangeText={ (link) => this.updatePost(link, "link") } />
                 <TouchableOpacity style={ styles.create }
                     onPress={ () => this.post() }>
-                    <Text style={{ color: '#fff' }}>Add Post</Text>
+                    <Text style={{ color: "#fff" }}>Add Post</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#3A7CA5'
     },
     input: {
-        backgroundColor: '#fff',
+        backgroundColor: "#fff",
         color: '#333',
         marginBottom: 10,
         padding: 10

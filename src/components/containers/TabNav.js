@@ -57,16 +57,22 @@ export default TabNavigator({
         }
     },
 }, {
-        tabBarPostition: 'bottom',
-        animationEnabled: false,
-        swipeEnabled: false
+    tabBarPosition: 'bottom',
+    animationEnabled: false,
+    swipeEnabled: false,
+    tabBarOptions: {
+        style: {
+            height: 50,
+            backgroundColor: config.constants.ACCNT_COLOR,
+            color: "#49d3b4"
+        }
+    }
 })
 
 // blue color: #3A7CA5
 const styles = StyleSheet.create({
     icon: {
         height: 20,
-        width: 20,
-        marginTop: 10
+        width: 20
     }
 })

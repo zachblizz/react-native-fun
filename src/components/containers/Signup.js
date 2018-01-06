@@ -47,6 +47,7 @@ class Signup extends Component {
             })
             .then(resp => resp.json())
             .then(resp => {
+                console.log(resp)
                 if (resp) {
                     let _users = Object.assign([], this.state.users)
                     _users.push(user)
@@ -78,13 +79,13 @@ class Signup extends Component {
             <Modal visible={ userId == '' }
                 transparent={ false }>
                 <View style={ styles.container }>
-                    <Text style={{ marginBottom: 30, fontSize: 40 }}>Post Stuff</Text>
+                    <Text style={{ marginBottom: 30, fontSize: 40, color: "#fff" }}>Post Stuff</Text>
                     <TextInput style={ styles.name } 
                         onChangeText={ (username) => this.createUser(username) }
                         placeholder="username" />
                     <TouchableOpacity style={ styles.signup }
                         onPress={ () => this.signup(user) }>
-                        <Text style={{ color: '#fff' }}>Sign In</Text>
+                        <Text style={{ color: "#fff" }}>Sign In</Text>
                     </TouchableOpacity>
                 </View>
             </Modal>
@@ -98,13 +99,13 @@ const styles = StyleSheet.create({
         paddingTop: 190,
         height: 100+'%',
         width: 100+'%',
-        backgroundColor: '#eee'
+        backgroundColor: config.constants.MAIN_COLOR
     },
     name: {
         color: "#333",
         width: 80+'%',
         padding: 10,
-        backgroundColor: '#fff'
+        backgroundColor: config.constants.ACCNT_COLOR
     },
     signup: {
         marginTop: 10,

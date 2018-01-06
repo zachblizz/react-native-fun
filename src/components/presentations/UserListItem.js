@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         padding: 20,
         flexDirection: 'row', 
         alignItems: 'center',
-        backgroundColor: '#fff'
+        backgroundColor: "#fff"
     },
     username: {
         fontSize: 20,

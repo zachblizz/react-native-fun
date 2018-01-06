@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TextInput, Modal, StyleSheet, TouchableOpacity } from 'react-native'
+import config from '../../config'
 
 class CommentModal extends Component {
     render() {
@@ -15,7 +16,7 @@ class CommentModal extends Component {
                         <View style={ styles.close }>
                             <TouchableOpacity
                                 onPress={ () => setVisibility() } >
-                                <Text style={{ fontSize: 20 }}>&times;</Text>
+                                <Text style={{ fontSize: 30, color: "#fff" }}>&times;</Text>
                             </TouchableOpacity>
                         </View>
                         <Text>{ post.text }</Text>
@@ -49,14 +50,15 @@ const styles = StyleSheet.create({
     },
     close: {
         position: 'absolute',
-        top: 10,
-        right: 10
+        top: 5 ,
+        right: 5,
+        color: "#fff"
     },
     container: {
         padding: 20,
         height: 30+'%',
-        width: 95+'%',
-        backgroundColor: '#ddd'
+        width: 99+'%',
+        backgroundColor: config.constants.ACCNT_COLOR
     },
     commentInfo: {
         position: 'absolute',
@@ -66,20 +68,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         width: 100+'%',
-        justifyContent: 'center',
-        borderTopWidth: StyleSheet.hairlineWidth,
-        borderColor: '#aaa',
+        justifyContent: 'center'
     },
     textInput: {
-        width: 90+'%',
-        fontSize: 15
+        width: 100+'%',
+        fontSize: 15,
+        padding: 20,
+        backgroundColor: config.constants.ACCNT_COLOR,
+        color: "#fff"
     },
     addBtn: {
-        marginTop: 4,
-        right: -10,
         backgroundColor: '#3A7CA5',
-        color: '#fff',
-        padding: 5
+        color: "#fff",
+        padding: 10,
+        paddingTop: 13,
+        height: 43
     }
 })
 

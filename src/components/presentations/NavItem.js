@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     },
     lbl: {
         fontSize: 12,
-        color: '#fff'
+        color: "#fff"
     },
 })
 

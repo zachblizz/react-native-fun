@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     postsContainer: {
         paddingTop: 10,
         height: 10,
+        backgroundColor: config.constants.MAIN_COLOR
     }
 })
 

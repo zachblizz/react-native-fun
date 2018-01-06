@@ -41,13 +41,14 @@ const styles = StyleSheet.create({
     post: {
         top: 0,
         width: 100+'%',
-        backgroundColor: '#fafafa',
+        backgroundColor: config.constants.MAIN_COLOR,
         padding: 15,
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderColor: '#d6d7da',
+        borderColor: '#313e4a',
     },
     content: {
-        fontSize: 15
+        fontSize: 15,
+        color: "#fff"
     },
     author: {
         marginTop: 10,
