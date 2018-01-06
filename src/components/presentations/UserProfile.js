@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
     postContainer: {
         paddingTop: 10,
         width: 100+'%',
-        height: 75+'%',
+        // height: 75+'%',
+        backgroundColor: config.constants.MAIN_COLOR
     },
     posts: {
         width: 100+'%',

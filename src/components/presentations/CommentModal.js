@@ -19,13 +19,14 @@ class CommentModal extends Component {
                                 <Text style={{ fontSize: 30, color: "#fff" }}>&times;</Text>
                             </TouchableOpacity>
                         </View>
-                        <Text>{ post.text }</Text>
+                        <Text style={{ color: "#fff", fontSize: 20 }}>{ post.text }</Text>
                         <View style={ styles.commentInfo }>
                             <TextInput
                                 style={ styles.textInput }
                                 maxLength={ 120 }
                                 placeholder={"Type comment here"}
                                 multiline={ true }
+                                placeholderTextColor="#48535e"
                                 onChangeText={(text) => commentText(text)}
                             />
                             <TouchableOpacity

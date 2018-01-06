@@ -13,6 +13,7 @@ class CryptoTracker extends Component {
         super(props)
         this.state = {
             info: [],
+            filtered: [],
             refreshing: false,
         }
     }
@@ -28,7 +29,8 @@ class CryptoTracker extends Component {
         .then(info => info.json())
         .then(info => {
 			this.setState({
-				info,
+                info,
+                filtered: info
 			})
 		}).catch(err => {
 			console.log(err)
@@ -61,6 +63,7 @@ class CryptoTracker extends Component {
             cryptos = info
 			this.setState({
                 info: cryptos,
+                filtered: cryptos,
                 refreshing: false
 			})
 		}).catch(err => {
@@ -68,11 +71,28 @@ class CryptoTracker extends Component {
 		})
     }
 
+    filterCurrancy(curr) {
+        let filtered = Object.assign([], this.state.info)
+        filtered = filtered.filter(item => {
+            return item.name.toLowerCase().indexOf(curr.toLowerCase()) !== -1  
+                    || item.symbol.toLowerCase().indexOf(curr.toLowerCase()) !== -1  
+        })
+
+        this.setState({
+            filtered
+        })
+    }
+
     render() {
-        let { info, refreshing } = this.state
+        let { info, refreshing, filtered } = this.state
 
         return (
             <View style={ styles.container }>
+                <TextInput style={ styles.search }
+                    onChangeText={ (currancy) => this.filterCurrancy(currancy) }
+                    placeholder="search currancies"
+                    placeholderTextColor="#48535e"
+                />
                 <ScrollView style={ styles.postsContainer }
                     refreshControl={
                         <RefreshControl
@@ -81,7 +101,7 @@ class CryptoTracker extends Component {
                         />
                     }>
                     <FlatList 
-                        data={ info }
+                        data={ filtered }
                         keyExtractor={ (crypto, i) => i }
                         renderItem={({ item }) => this._renderCrypto(item)}
                     />
@@ -103,8 +123,10 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     search: {
-        backgroundColor: "#fff",
-        padding: 10,
+        backgroundColor: config.constants.ACCNT_COLOR,
+        color: "#fff",
+        // placeholderTextColor: "#fff",
+        padding: 20,
         marginBottom: 20
     }
 })

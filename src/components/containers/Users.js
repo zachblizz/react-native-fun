@@ -94,6 +94,7 @@ class Users extends Component {
                 <TextInput style={ styles.search }
                     onChangeText={ (username) => this.filterUsers(username) }
                     placeholder="search users"
+                    placeholderTextColor="#48535e"
                 />
                 <FlatList 
                     data={ users }
@@ -109,16 +110,18 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 20,
-        width: 100+'%'
+        width: 100+'%',
+        backgroundColor: config.constants.MAIN_COLOR
     },
     friendLayout: {
         flexDirection: "column",
         marginBottom: 5,
     },
     search: {
-        backgroundColor: "#fff",
+        backgroundColor: config.constants.ACCNT_COLOR,
         padding: 10,
-        marginBottom: 20
+        marginBottom: 20,
+        color: '#fff'
     }
 })
 

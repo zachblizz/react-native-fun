@@ -45,9 +45,10 @@ const styles = StyleSheet.create({
         padding: 15,
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderColor: '#313e4a',
+        marginBottom: 10
     },
     content: {
-        fontSize: 15,
+        fontSize: 20,
         color: "#fff"
     },
     author: {

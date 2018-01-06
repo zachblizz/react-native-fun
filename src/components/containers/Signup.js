@@ -82,6 +82,7 @@ class Signup extends Component {
                     <Text style={{ marginBottom: 30, fontSize: 40, color: "#fff" }}>Post Stuff</Text>
                     <TextInput style={ styles.name } 
                         onChangeText={ (username) => this.createUser(username) }
+                        placeholderTextColor="#48535e"
                         placeholder="username" />
                     <TouchableOpacity style={ styles.signup }
                         onPress={ () => this.signup(user) }>
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
         backgroundColor: config.constants.MAIN_COLOR
     },
     name: {
-        color: "#333",
+        color: "#fff",
         width: 80+'%',
         padding: 10,
         backgroundColor: config.constants.ACCNT_COLOR

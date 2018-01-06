@@ -15,8 +15,9 @@ class CryptoItem extends Component {
                     <Text style={ styles.username }>
                         { item.name } | { item.symbol }
                     </Text>
+                    <Text style={{ color: "#aaa" }}>Curr Price: ${ item.price_usd }</Text>
                 </View>
-                <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row", marginTop: 20 }}>
                     <DisplayInfo label="Last 1 Hr"
                         value={ item.percent_change_1h } />
                     <DisplayInfo label="Last 24 Hrs"
@@ -32,13 +33,12 @@ class CryptoItem extends Component {
 const styles = StyleSheet.create({
     userContainer: {
         padding: 20,
-        // flexDirection: 'row', 
-        // alignItems: 'center',
         backgroundColor: config.constants.ACCNT_COLOR_DARK
     },
     username: {
-        fontSize: 20,
+        fontSize: 25,
         color: "#fff",
+        flexDirection: 'row',
         marginBottom: 4
     },
     joined: {

@@ -11,11 +11,11 @@ class DisplayInfo extends Component {
         let { label, value } = this.props
 
         return (
-            <View style={{ margin: 10 }}>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={{ alignItems: "center", marginLeft: 30 }}>
+                <View style={{ flexDirection: "row", alignItems: "center", alignContent: "center" }}>
                     <Image source={ value > 0 ? config.images.positive : config.images.negative } 
                         style={{ height: 12, width: 12, marginRight: 3 }} />
-                    <Text style={{ color: "#ccc" }}>{ value }</Text>
+                    <Text style={{ color: "#ccc" }}>{ value }%</Text>
                 </View>
                 <Text style={{ color: '#777' }}>{ label }</Text>
             </View>

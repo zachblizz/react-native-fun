@@ -33,15 +33,15 @@ const styles = StyleSheet.create({
         padding: 20,
         flexDirection: 'row', 
         alignItems: 'center',
-        backgroundColor: "#fff"
+        backgroundColor: config.constants.ACCNT_COLOR_DARK
     },
     username: {
-        fontSize: 20,
-        color: "#333",
+        fontSize: 30,
+        color: "#fff",
         marginBottom: 4
     },
     joined: {
-        fontSize: 10,
+        fontSize: 12,
         color: '#888'
     },
     delete: {
