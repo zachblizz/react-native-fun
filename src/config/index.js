@@ -12,13 +12,18 @@ export default {
         newfocus: require('../../assets/images/new_focus.png'),
         newUnfocus: require('../../assets/images/new_unfocus.png'),
         editIcon: require('../../assets/images/edit.png'),
+        crypto: require('../../assets/images/crypto.png'),
+        cryptoFocus: require('../../assets/images/crypto_focus.png'),
+        positive: require('../../assets/images/positive.png'),
+        negative: require('../../assets/images/negative.png'),
     },
     constants: {
         HOST_IP: '52.40.200.123',
         UPDATE_USER_ID: 'UPDATE_USER_ID',
         UPDATE_USER_NAME: 'UPDATE_USER_NAME',
-        MAIN_COLOR: "#101820",
+        MAIN_COLOR: "#121c25",
         ACCNT_COLOR: "#1b2936",
+        ACCNT_COLOR_DARK: "#101820",
         MAIN_FONT: "#49d3b4"
     }
 }

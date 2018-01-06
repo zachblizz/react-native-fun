@@ -51,8 +51,7 @@ const styles = StyleSheet.create({
     close: {
         position: 'absolute',
         top: 5 ,
-        right: 5,
-        color: "#fff"
+        right: 5
     },
     container: {
         padding: 20,

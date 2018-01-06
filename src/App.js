@@ -8,6 +8,7 @@ import Users from './components/containers/Users'
 import Profile from './components/containers/Profile'
 import Post from './components/containers/Post'
 import Posts from './components/containers/Posts'
+import CryptoTracker from './components/containers/CryptoTracker'
 
 const Navigation = StackNavigator({
     Root: { screen: TabNav },
@@ -15,6 +16,7 @@ const Navigation = StackNavigator({
     Users: { screen: Users },
     Profile: { screen: Profile },
     Post: { screen: Post },
+    CryptoTracker: { screen: CryptoTracker },
     Posts: { screen: Posts }
 })
 

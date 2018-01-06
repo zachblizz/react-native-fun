@@ -5,6 +5,7 @@ import config from '../../config'
 import Posts from './Posts'
 import NewPost from './NewPost'
 import Users from './Users'
+import CryptoTracker from './CryptoTracker'
 import Store from '../../store/Store'
 
 export default TabNavigator({
@@ -46,15 +47,15 @@ export default TabNavigator({
             )
         }
     },
-    ProfileTab: {
-        screen: Users,
-        path: '/profile',
+    CryptoTab: {
+        screen: CryptoTracker,
+        path: '/crypto',
         navigationOptions: {
-            title: Store.getState().username || 'Profile',
+            title: 'Cypto',
             tabBarLabel: '',
             tabBarIcon: ({ focused }) => (
                 <Image style={ styles.icon }
-                    source={ focused ? config.images.userProfileIcon : config.images.userProfileUnfocus } />
+                    source={ focused ? config.images.cryptoFocus : config.images.crypto } />
             )
         }
     },
@@ -67,6 +68,7 @@ export default TabNavigator({
         style: {
             height: 90,
             backgroundColor: config.constants.ACCNT_COLOR,
+            paddingBottom: 25,
             color: "#49d3b4"
         }
     }
@@ -77,7 +79,5 @@ const styles = StyleSheet.create({
     icon: {
         height: 25,
         width: 25,
-        marginBottom: 10,
-        color: config.constants.ACCNT_COLOR,
     }
 })
