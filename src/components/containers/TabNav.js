@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, Text, StyleSheet } from 'react-native'
-import { TabNavigator } from 'react-navigation'
+import { TabNavigator, TabBarBottom } from 'react-navigation'
 import config from '../../config'
 import Posts from './Posts'
 import NewPost from './NewPost'
@@ -26,6 +26,7 @@ export default TabNavigator({
         navigationOptions: {
             title: 'Post',
             tabBarLabel: '',
+            color: config.constants.ACCNT_COLOR,
             tabBarIcon: ({ focused }) => (
                 <Image style={ styles.icon }
                     source={ focused ? config.images.newfocus : config.images.newUnfocus } />
@@ -38,6 +39,7 @@ export default TabNavigator({
         navigationOptions: {
             title: 'Users',
             tabBarLabel: '',
+            color: config.constants.ACCNT_COLOR,
             tabBarIcon: ({ focused }) => (
                 <Image style={ styles.icon }
                     source={ focused ? config.images.usersFocus : config.images.usersUnfocus } />
@@ -60,9 +62,10 @@ export default TabNavigator({
     tabBarPosition: 'bottom',
     animationEnabled: false,
     swipeEnabled: false,
+    tabBarComponent: TabBarBottom,
     tabBarOptions: {
         style: {
-            height: 50,
+            height: 90,
             backgroundColor: config.constants.ACCNT_COLOR,
             color: "#49d3b4"
         }
@@ -72,7 +75,9 @@ export default TabNavigator({
 // blue color: #3A7CA5
 const styles = StyleSheet.create({
     icon: {
-        height: 20,
-        width: 20
+        height: 25,
+        width: 25,
+        marginBottom: 10,
+        color: config.constants.ACCNT_COLOR,
     }
 })
