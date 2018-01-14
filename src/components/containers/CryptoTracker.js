@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
     search: {
         backgroundColor: config.constants.ACCNT_COLOR,
         color: "#fff",
-        // placeholderTextColor: "#fff",
         padding: 20,
         marginBottom: 20
     }
