@@ -13,12 +13,16 @@ class CryptoTracker extends Component {
         super(props)
         this.state = {
             info: [],
-            filtered: [],
+            // filtered: [],
             refreshing: false,
+            fiterString: ''
         }
     }
 
     componentDidMount() {
+        // another URL: https://api.coinbase.com/v2/prices/USD/spot?
+        // historic URL: https://api.coinbase.com/v2/prices/BTC-USD/historic?period=month
+        // which gives more up-to-date information, but don't get as much information...
         fetch("https://api.coinmarketcap.com/v1/ticker", {
             method: "GET",
             headers: {
@@ -74,8 +78,8 @@ class CryptoTracker extends Component {
     filterCurrancy(curr) {
         let filtered = Object.assign([], this.state.info)
         filtered = filtered.filter(item => {
-            return item.name.toLowerCase().indexOf(curr.toLowerCase()) !== -1  
-                    || item.symbol.toLowerCase().indexOf(curr.toLowerCase()) !== -1  
+            return item.name.toLowerCase().includes(curr.toLowerCase())
+                    || item.symbol.toLowerCase().includes(curr.toLowerCase()) 
         })
 
         this.setState({
@@ -84,12 +88,12 @@ class CryptoTracker extends Component {
     }
 
     render() {
-        let { info, refreshing, filtered } = this.state
+        let { info, refreshing, filtered, filterString } = this.state
 
         return (
             <View style={ styles.container }>
                 <TextInput style={ styles.search }
-                    onChangeText={ (currancy) => this.filterCurrancy(currancy) }
+                    onChangeText={ filterString => this.filterCurrancy(filterString) }
                     placeholder="search currancies"
                     placeholderTextColor="#48535e"
                 />

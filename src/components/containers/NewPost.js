@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import { View, TouchableOpacity, Text, Image, StyleSheet, TextInput, AlertIOS } from 'react-native'
-import config from '../../config'
-import Store from '../../store/Store'
+import React, { Component } from "react"
+import { View, TouchableOpacity, Text, Image, StyleSheet, TextInput, AlertIOS } from "react-native"
+import config from "../../config"
+import Store from "../../store/Store"
 
 class NewPost extends Component {
     constructor(props) {
         super(props)
         this.state = {
             post: {
-                title: '',
-                text: '',
-                link: '',
-                userId: ''
+                title: "",
+                text: "",
+                link: "",
+                userId: ""
             }
         }
     }
@@ -37,12 +37,12 @@ class NewPost extends Component {
 
     post() {
         let { post } = this.state
-        if (post.title !== '' && (post.text !== '' || post.link !== '')) {
-            fetch("http://" + config.constants.HOST_IP + ":3040/api/post", {
+        if (post.title !== "" && (post.text !== "" || post.link !== "")) {
+            fetch(`http://${config.constants.HOST_IP}:3040/api/post`, {
                 method: "POST",
                 headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(post)
             })
@@ -55,7 +55,7 @@ class NewPost extends Component {
                 }
             })
         } else {
-            AlertIOS.alert('DOH!!', "Please provie the Title and the Text, or Link for your post!")
+            AlertIOS.alert("DOH!!", "Please provie the Title and the Text, or Link for your post!")
         }
     }
 
@@ -84,17 +84,17 @@ class NewPost extends Component {
 const styles = StyleSheet.create({
     container: {
         padding: 10,
-        height: 100+'%',
+        height: 100+"%",
         backgroundColor: config.constants.MAIN_COLOR
     },
     create: {
         padding: 10,
-        alignItems: 'center',
-        backgroundColor: '#3A7CA5'
+        alignItems: "center",
+        backgroundColor: "#3A7CA5"
     },
     input: {
         backgroundColor: config.constants.ACCNT_COLOR,
-        color: '#fff',
+        color: "#fff",
         marginBottom: 10,
         padding: 10
     },

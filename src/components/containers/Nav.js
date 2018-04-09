@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import NavItem from '../presentations/NavItem'
+import React, { Component } from "react"
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native"
+import NavItem from "../presentations/NavItem"
 
 class Nav extends Component {
     render() {
@@ -15,13 +15,13 @@ class Nav extends Component {
 
 const styles = StyleSheet.create({
     nav: {
-        position: 'absolute',
+        position: "absolute",
         bottom: 0,
-        width: 100+'%',
+        width: 100+"%",
         height: 50,
-        backgroundColor: '#333',
-        alignItems: 'center',
-        flexDirection: 'row'
+        backgroundColor: "#333",
+        alignItems: "center",
+        flexDirection: "row"
     },
 })
 

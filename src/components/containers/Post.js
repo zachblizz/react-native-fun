@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, 
-    Image, ScrollView, RefreshControl } from 'react-native'
-import CommentModal from '../presentations/CommentModal'
-import PostPres from '../presentations/PostPres'
-import Comments from '../presentations/Comments'
-import config from '../../config'
-import Store from '../../store/Store'
+         Image, ScrollView, RefreshControl } from "react-native"
+import CommentModal from "../presentations/CommentModal"
+import PostPres from "../presentations/PostPres"
+import Comments from "../presentations/Comments"
+import config from "../../config"
+import Store from "../../store/Store"
 
 class Post extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -52,11 +52,11 @@ class Post extends Component {
         let { comment } = this.state
         let comments = Object.assign([], this.state.comments)
 
-        fetch("http://" + config.constants.HOST_IP + ":3040/api/comment", {
-            method: 'POST',
+        fetch(`http://${config.constants.HOST_IP}:3040/api/comment`, {
+            method: "POST",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                "Accept": "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 postId: postId,
@@ -79,10 +79,10 @@ class Post extends Component {
         let comments = Object.assign([], this.state.comments)
 
         fetch("http://" + config.constants.HOST_IP + ":3040/api/postById", {
-            method: 'POST',
+            method: "POST",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                "Accept": "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 id: postId
@@ -134,17 +134,17 @@ class Post extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        width: 100+'%',
-        height: 100+'%',
+        width: 100+"%",
+        height: 100+"%",
         backgroundColor: config.constants.MAIN_COLOR
     },
     post: {
         top: 0,
-        width: 100+'%',
+        width: 100+"%",
         backgroundColor: config.constants.MAIN_COLOR,
         padding: 15,
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderColor: '#313e4a',
+        borderColor: "#313e4a",
     },
     content: {
         fontSize: 15
@@ -152,33 +152,33 @@ const styles = StyleSheet.create({
     link: {
         marginTop: 10,
         marginBottom: 10,
-        color: 'blue',
+        color: "blue",
         fontSize: 10
     },
     author: {
         marginTop: 10,
         fontSize: 12,
-        color: '#3E7CB1'
+        color: "#3E7CB1"
     },
     comments: {
         top: 0,
-        width: 100+'%',
-        height: 70+'%',
+        width: 100+"%",
+        height: 70+"%",
         marginLeft: 15
     },
     noComments: {
-        alignItems: 'center',
+        alignItems: "center",
         paddingTop: 100
     },
     addCmt: {
-        position: 'absolute',
+        position: "absolute",
         bottom: 40,
         right: 20,
         padding: 10,
-        backgroundColor: '#3A7CA5',
+        backgroundColor: "#3A7CA5",
         height: 33,
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: "center",
+        alignItems: "center"
     },
     icon: { 
         height: 15, 

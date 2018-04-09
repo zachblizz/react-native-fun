@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
-import { View, FlatList, Text, ScrollView, TouchableOpacity, StyleSheet, RefreshControl } from 'react-native'
-import PostItem from '../presentations/PostItem'
-import dateformat from 'dateformat'
-import Signup from './Signup'
-import config from '../../config'
-import Store from '../../store/Store'
+import React, { Component } from "react"
+import { View, FlatList, Text, ScrollView, TouchableOpacity, 
+         StyleSheet, RefreshControl } from "react-native"
+import PostItem from "../presentations/PostItem"
+import dateformat from "dateformat"
+import Signup from "./Signup"
+import config from "../../config"
+import Store from "../../store/Store"
 
 class Posts extends Component {
     static navigationOptions = {
@@ -29,11 +30,11 @@ class Posts extends Component {
             })
         })
 
-        fetch("http://" + config.constants.HOST_IP + ":3040/api/posts", {
+        fetch(`http://${config.constants.HOST_IP}:3040/api/posts`, {
             method: "GET",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                "Accept": "application/json",
+                "Content-Type": "application/json",
             }
         })
         .then(resp => resp.json())
@@ -59,14 +60,16 @@ class Posts extends Component {
 
     _onRefresh() {
         let posts = Object.assign([], this.state.posts)
+        
         this.setState({
             refreshing: true
         })
-        fetch("http://" + config.constants.HOST_IP + ":3040/api/posts", {
+
+        fetch(`https://${config.constants.HOST_IP}:3040/api/posts`, {
             method: "GET",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                "Accept": "application/json",
+                "Content-Type": "application/json",
             }
         })
         .then(resp => resp.json())
@@ -90,13 +93,13 @@ class Posts extends Component {
                     />
                 }>
                 { 
-                    user.userId == '' || !user.userId 
+                    user.userId == "" || !user.userId 
                     ? <Signup /> 
                     : null
                 }
                 <FlatList data={ posts } 
-                        keyExtractor={ item => item._id }
-                        renderItem={ ({item}) => this._renderPosts(item) } /> 
+                    keyExtractor={ item => item._id }
+                    renderItem={ ({item}) => this._renderPosts(item) } /> 
             </ScrollView>
         )
     }

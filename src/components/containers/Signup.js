@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { View, StyleSheet, Text, TextInput, TouchableOpacity, AlertIOS, Modal } from 'react-native'
-import FriendFields from '../presentations/FriendFields'
-import config from '../../config'
-import Store from '../../store/Store'
+import React, { Component } from "react"
+import { View, StyleSheet, Text, TextInput, TouchableOpacity, AlertIOS, Modal } from "react-native"
+import FriendFields from "../presentations/FriendFields"
+import config from "../../config"
+import Store from "../../store/Store"
 
 class Signup extends Component {
     static navigationOptions = {
@@ -15,7 +15,7 @@ class Signup extends Component {
             count: 0,
             user: {},
             users: [],
-            userId: ''
+            userId: ""
         }
     }
 
@@ -36,12 +36,12 @@ class Signup extends Component {
     }
 
     signup(user) {
-        if (user.username !== '') {
-            fetch("http://" + config.constants.HOST_IP + ":3040/api/signup", {
+        if (user.username !== "") {
+            fetch(`http://${config.constants.HOST_IP}:3040/api/signup`, {
                 method: "POST",
                 headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(user)
             })
@@ -76,7 +76,7 @@ class Signup extends Component {
         let { user, userId } = this.state
 
         return (
-            <Modal visible={ userId == '' }
+            <Modal visible={ userId == "" }
                 transparent={ false }>
                 <View style={ styles.container }>
                     <Text style={{ marginBottom: 30, fontSize: 40, color: "#fff" }}>Post Stuff</Text>
@@ -96,15 +96,15 @@ class Signup extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
+        alignItems: "center",
         paddingTop: 190,
-        height: 100+'%',
-        width: 100+'%',
+        height: 100+"%",
+        width: 100+"%",
         backgroundColor: config.constants.MAIN_COLOR
     },
     name: {
         color: "#fff",
-        width: 80+'%',
+        width: 80+"%",
         padding: 10,
         backgroundColor: config.constants.ACCNT_COLOR
     },
@@ -113,9 +113,9 @@ const styles = StyleSheet.create({
         padding: 10,
         height: 30,
         width: 130,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#3A7CA5'
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#3A7CA5"
     }
 })
 

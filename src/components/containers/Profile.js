@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { View, Text, ScrollView, RefreshControl } from 'react-native'
-import UserProfile from '../presentations/UserProfile'
-import config from '../../config'
+import React, { Component } from "react"
+import { View, Text, ScrollView, RefreshControl } from "react-native"
+import UserProfile from "../presentations/UserProfile"
+import config from "../../config"
 
 class Profile extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -20,11 +20,11 @@ class Profile extends Component {
     componentDidMount() {
         let { params } = this.props.navigation.state
         let user = params.user
-        fetch("http://" + config.constants.HOST_IP + ":3040/api/postsByUser", {
+        fetch(`http://${config.constants.HOST_IP}:3040/api/postsByUser`, {
             method: "POST",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                "Accept": "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 "username": params.user.username
@@ -45,11 +45,11 @@ class Profile extends Component {
     _onRefresh() {
         let posts = Object.assign([], this.state.posts)
         this.setState({ refreshing: true })
-        fetch("http://" + config.constants.HOST_IP + ":3040/api/postsByUser", {
+        fetch(`http://${config.constants.HOST_IP}:3040/api/postsByUser`, {
             method: "POST",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                "Accept": "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 "username": params.user.username
