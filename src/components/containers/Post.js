@@ -78,7 +78,7 @@ class Post extends Component {
         })
         let comments = Object.assign([], this.state.comments)
 
-        fetch("http://" + config.constants.HOST_IP + ":3040/api/postById", {
+        fetch(`http://${config.constants.HOST_IP}:3040/api/postById`, {
             method: "POST",
             headers: {
                 "Accept": "application/json",
